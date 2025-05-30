@@ -50,6 +50,7 @@ harmony-hub/
 ```bash
 git clone https://github.com/vijaybkhot/harmony-hub.git
 cd harmony-hub
+```
 
 
 ⸻
