@@ -1,0 +1,24 @@
+{
+  "name": "cs554-lab-3",
+  "version": "1.0.0",
+  "description": "My lab 3 module",
+  "license": "MIT",
+  "author": "Vijay Khot 20021838",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.11.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "graphql": "^16.10.0",
+    "graphql-scalars": "^1.24.1",
+    "mongodb": "^6.13.1",
+    "redis": "^4.7.0",
+    "stack": "^0.1.0",
+    "uuid": "^11.1.0"
+  }
+}

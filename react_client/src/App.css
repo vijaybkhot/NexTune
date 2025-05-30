@@ -1,0 +1,23 @@
+.navbar {
+  background-color: #1a1a1a;
+  padding: 1rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-link.active {
+  border-bottom: 2px solid #ffffff;
+}
