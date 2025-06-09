@@ -1,0 +1,21 @@
+query AlbumsByGenre($genre: MusicGenre!) {
+  albumsByGenre(genre: $genre) {
+    _id
+    title
+    releaseDate
+    genre
+    artist {
+      _id
+      name
+    }
+    recordCompany {
+      _id
+      name
+    }
+    songs {
+      _id
+      title
+      duration
+    }
+  }
+}

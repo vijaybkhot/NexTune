@@ -1,0 +1,41 @@
+mutation EditAlbum(
+  $id: String!
+  $title: String
+  $releaseDate: String
+  $genre: MusicGenre
+  $songs: [String!]
+  $artistId: String
+  $companyId: String
+) {
+  editAlbum(
+    _id: $id
+    title: $title
+    releaseDate: $releaseDate
+    genre: $genre
+    songs: $songs
+    artistId: $artistId
+    companyId: $companyId
+  ) {
+    _id
+    title
+    releaseDate
+    genre
+    artist {
+      _id
+      name
+    }
+    recordCompany {
+      _id
+      name
+    }
+    songs {
+      _id
+      title
+      duration
+      album {
+        _id
+        title
+      }
+    }
+  }
+}

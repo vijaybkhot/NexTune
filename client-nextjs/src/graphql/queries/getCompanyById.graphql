@@ -1,0 +1,23 @@
+query GetCompanyById($id: String!) {
+  getCompanyById(_id: $id) {
+    _id
+    name
+    foundedYear
+    country
+    numOfAlbums
+    albums {
+      _id
+      title
+      genre
+      releaseDate
+      artist {
+        _id
+        name
+      }
+      songs {
+        _id
+        title
+      }
+    }
+  }
+}

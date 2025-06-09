@@ -1,0 +1,18 @@
+mutation EditArtist(
+  $id: String!
+  $name: String
+  $dateFormed: String
+  $members: [String!]
+) {
+  editArtist(
+    _id: $id
+    name: $name
+    date_formed: $dateFormed
+    members: $members
+  ) {
+    _id
+    name
+    dateFormed
+    members
+  }
+}

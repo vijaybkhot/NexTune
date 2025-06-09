@@ -1,0 +1,17 @@
+query GetSongsByArtistId($artistId: String!) {
+  getSongsByArtistId(artistId: $artistId) {
+    _id
+    title
+    duration
+    album {
+      _id
+      title
+      genre
+      releaseDate
+      recordCompany {
+        _id
+        name
+      }
+    }
+  }
+}

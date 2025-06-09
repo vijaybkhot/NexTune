@@ -1,0 +1,13 @@
+query RecordCompanies {
+  recordCompanies {
+    _id
+    name
+    foundedYear
+    country
+    albums {
+      _id
+      title
+    }
+    numOfAlbums
+  }
+}

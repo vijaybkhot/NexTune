@@ -1,0 +1,9 @@
+query Artists {
+  artists {
+    _id
+    name
+    dateFormed
+    members
+    numOfAlbums
+  }
+}
