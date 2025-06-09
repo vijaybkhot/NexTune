@@ -1,0 +1,18 @@
+mutation RemoveAlbum($id: String!) {
+  removeAlbum(_id: $id) {
+    _id
+    artist {
+      _id
+      name
+    }
+    recordCompany {
+      _id
+      name
+    }
+    songs {
+      _id
+      title
+    }
+    title
+  }
+}

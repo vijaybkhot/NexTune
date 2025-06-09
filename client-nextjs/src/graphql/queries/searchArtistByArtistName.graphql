@@ -1,0 +1,13 @@
+query SearchArtistByArtistName($searchTerm: String!) {
+  searchArtistByArtistName(searchTerm: $searchTerm) {
+    _id
+    name
+    dateFormed
+    members
+    albums {
+      _id
+      title
+    }
+    numOfAlbums
+  }
+}

@@ -1,0 +1,12 @@
+query SearchSongByTitle($searchTitleTerm: String!) {
+  searchSongByTitle(searchTitleTerm: $searchTitleTerm) {
+    _id
+    title
+    duration
+    album {
+      _id
+      title
+      releaseDate
+    }
+  }
+}

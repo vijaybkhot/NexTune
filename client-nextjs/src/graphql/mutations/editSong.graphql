@@ -1,0 +1,24 @@
+mutation EditSong(
+  $id: String!
+  $title: String
+  $duration: String
+  $albumId: String
+) {
+  editSong(_id: $id, title: $title, duration: $duration, albumId: $albumId) {
+    _id
+    title
+    duration
+    album {
+      _id
+      title
+      artist {
+        _id
+        name
+      }
+      recordCompany {
+        _id
+        name
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+mutation RemoveCompany($id: String!) {
+  removeCompany(_id: $id) {
+    _id
+    name
+    albums {
+      _id
+      title
+    }
+  }
+}

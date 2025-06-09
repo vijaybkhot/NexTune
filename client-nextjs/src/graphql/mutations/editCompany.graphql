@@ -1,0 +1,23 @@
+mutation EditCompany(
+  $id: String!
+  $name: String
+  $foundedYear: Int
+  $country: String
+) {
+  editCompany(
+    _id: $id
+    name: $name
+    founded_year: $foundedYear
+    country: $country
+  ) {
+    _id
+    name
+    foundedYear
+    country
+    albums {
+      _id
+      title
+    }
+    numOfAlbums
+  }
+}

@@ -1,0 +1,6 @@
+mutation RemoveArtist($id: String!) {
+  removeArtist(_id: $id) {
+    _id
+    name
+  }
+}

@@ -1,0 +1,31 @@
+mutation AddAlbum(
+  $title: String!
+  $releaseDate: String!
+  $genre: MusicGenre!
+  $artistId: String!
+  $companyId: String!
+) {
+  addAlbum(
+    title: $title
+    releaseDate: $releaseDate
+    genre: $genre
+    artistId: $artistId
+    companyId: $companyId
+  ) {
+    _id
+    title
+    artist {
+      name
+      _id
+    }
+    recordCompany {
+      _id
+      name
+    }
+    releaseDate
+    genre
+    songs {
+      _id
+    }
+  }
+}

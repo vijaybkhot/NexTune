@@ -1,0 +1,13 @@
+query CompanyByFoundedYear($min: Int!, $max: Int!) {
+  companyByFoundedYear(min: $min, max: $max) {
+    _id
+    name
+    foundedYear
+    country
+    albums {
+      _id
+      title
+    }
+    numOfAlbums
+  }
+}

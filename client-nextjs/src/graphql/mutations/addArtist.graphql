@@ -1,0 +1,13 @@
+mutation AddArtist($name: String!, $dateFormed: String!, $members: [String!]!) {
+  addArtist(name: $name, date_formed: $dateFormed, members: $members) {
+    _id
+    name
+    dateFormed
+    members
+    albums {
+      _id
+      title
+    }
+    numOfAlbums
+  }
+}

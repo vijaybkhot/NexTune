@@ -1,0 +1,15 @@
+query GetArtistById($id: String!) {
+  getArtistById(_id: $id) {
+    _id
+    name
+    dateFormed
+    members
+    numOfAlbums
+    albums {
+      _id
+      title
+      genre
+      releaseDate
+    }
+  }
+}

@@ -12,13 +12,8 @@ import {
 
 const PORT = 4000;
 const app = express();
+
 app.use(express.json());
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    credentials: true,
-  })
-);
 
 async function getContext({ req }) {
   const queryString = req.body.query;
@@ -32,9 +27,20 @@ const apolloServer = new ApolloServer({
 
 await connectToRedis();
 await apolloServer.start();
-app.use("/graphql", apolloMiddleware(apolloServer, { context: getContext }));
 
-app.listen({ port: PORT }, () => {
+app.use(
+  "/graphql",
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  }),
+  apolloMiddleware(apolloServer, {
+    context: getContext,
+    cors: false, // Disable Apollo's internal CORS handling
+  })
+);
+
+app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`GraphQL endpoint: http://localhost:${PORT}/graphql`);
 });
