@@ -15,11 +15,11 @@ import { dbConnection } from "./Config/mongoConnection.js";
 dotenv.config();
 
 const PORT = process.env.PORT || 4000;
-const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || "http://localhost:3000";
-const BASE_URL =
-  process.env.NODE_ENV === "production"
-    ? process.env.BASE_URL || "https://your-deployment-url.com"
-    : `http://localhost:${PORT}`;
+
+const rawAllowedOrigins = process.env.ALLOWED_ORIGINS || "";
+const allowedOrigins = rawAllowedOrigins
+  .split(",")
+  .map((origin) => origin.trim());
 
 const app = express();
 app.use(express.json());
@@ -36,31 +36,33 @@ const apolloServer = new ApolloServer({
 
 (async () => {
   try {
-    // ✅ Connect to MongoDB
     await dbConnection();
-
-    // ✅ Connect to Redis
     await connectToRedis();
-
-    // ✅ Start Apollo Server
     await apolloServer.start();
 
+    // ✅ Apply CORS Middleware with Dynamic Origin Check
     app.use(
       "/graphql",
       cors({
-        origin: CLIENT_ORIGIN,
+        origin: (origin, callback) => {
+          // Allow requests with no origin (like mobile apps or curl)
+          if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+          } else {
+            callback(new Error("Not allowed by CORS"));
+          }
+        },
         credentials: true,
       }),
       apolloMiddleware(apolloServer, {
         context: getContext,
-        cors: false,
+        cors: false, // Disable internal Apollo CORS
       })
     );
 
     app.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);
-      console.log(`📡 GraphQL endpoint: ${BASE_URL}/graphql`);
-      console.log(`🌐 Client origin: ${CLIENT_ORIGIN}`);
+      console.log(`📡 GraphQL endpoint: /graphql`);
     });
   } catch (err) {
     console.error("❌ Server startup error:", err);
