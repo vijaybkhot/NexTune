@@ -1,5 +1,5 @@
+import { Song } from "@/__generated__/types";
 import DataCard from "@/components/DataCard";
-import type { Song } from "@/types/graphql";
 
 type SongListProps = {
   songs: Song[];

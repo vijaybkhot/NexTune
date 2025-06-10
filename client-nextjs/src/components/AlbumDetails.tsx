@@ -1,6 +1,7 @@
+import { Album } from "@/__generated__/types";
 import Link from "next/link";
 
-export default function AlbumDetails({ album }: { album: any }) {
+export default function AlbumDetails({ album }: { album: Album }) {
   return (
     <>
       <h1>{album.title}</h1>

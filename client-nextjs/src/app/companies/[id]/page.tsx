@@ -22,11 +22,15 @@ export async function generateStaticParams() {
   );
 }
 
+type RecordCompanyPageProps = {
+  params: Promise<{
+    id: string;
+  }>;
+};
+
 export default async function RecordCompanyPage({
   params,
-}: {
-  params: { id: string };
-}) {
+}: RecordCompanyPageProps) {
   const { id } = await params;
   const client = getClient();
 

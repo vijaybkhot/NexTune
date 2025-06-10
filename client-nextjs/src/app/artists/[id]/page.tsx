@@ -23,11 +23,13 @@ export async function generateStaticParams() {
   );
 }
 
-export default async function ArtistPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+type PageProps = {
+  params: Promise<{
+    id: string;
+  }>;
+};
+
+export default async function ArtistPage({ params }: PageProps) {
   const { id } = await params;
   const client = getClient();
 

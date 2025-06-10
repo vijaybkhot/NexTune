@@ -21,22 +21,22 @@ export async function generateStaticParams() {
   );
 }
 
-export default async function AlbumPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+type PageProps = {
+  params: Promise<{
+    id: string;
+  }>;
+};
+
+export default async function AlbumPage({ params }: PageProps) {
   const { id } = await params;
 
   const client = getClient();
 
-  // Preload data into cache
   await client.query({
     query: GetAlbumByIdDocument,
     variables: { id },
     fetchPolicy: "network-only",
   });
 
-  // Pass the id to client fetch from Apollo cache
   return <AlbumClientSection albumId={id} />;
 }

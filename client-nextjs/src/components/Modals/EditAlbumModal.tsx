@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-  Album,
   MusicGenre,
   useArtistsQuery,
   useEditAlbumMutation,
@@ -53,37 +52,18 @@ const convertToInputDateFormat = (mdyDate: string) => {
 function EditAlbumModal({ isOpen, album, handleClose }: EditAlbumModalProps) {
   // const [showEditModal, setShowEditModal] = useState<boolean>(isOpen);
   const [editAlbum, { loading, error }] = useEditAlbumMutation({
-    update(cache, { data }) {
-      const updatedAlbum = data?.editAlbum;
-      if (!updatedAlbum) return;
+    refetchQueries: (result) => {
+      const updatedAlbum = result.data?.editAlbum;
+      if (!updatedAlbum) return [];
 
-      try {
-        const existing = cache.readQuery<{ albums: Album[] }>({
-          query: AlbumsDocument,
-        });
-
-        if (existing?.albums) {
-          const updatedAlbums = existing.albums.map((album) =>
-            album._id === updatedAlbum._id ? updatedAlbum : album
-          );
-
-          cache.writeQuery({
-            query: AlbumsDocument,
-            data: { albums: updatedAlbums },
-          });
-        }
-      } catch (e) {
-        console.log(e, "Albums not found in cache. Nothing to cache update.");
-      }
-
-      // Update GET_ALBUM_BY_ID
-      cache.writeQuery({
-        query: GetAlbumByIdDocument,
-        variables: { id: updatedAlbum._id },
-        data: { getAlbumById: updatedAlbum },
-      });
+      return [
+        { query: AlbumsDocument },
+        {
+          query: GetAlbumByIdDocument,
+          variables: { id: updatedAlbum._id },
+        },
+      ];
     },
-
     awaitRefetchQueries: true,
   });
 
