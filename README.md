@@ -1,8 +1,8 @@
 
 
-# 🎵 Harmony Hub
+# 🎵 NexTune
 
-**Harmony Hub** is a full-featured music aggregation platform built with **React** and **Apollo Client**, powered by a custom **GraphQL** backend. It allows users to explore, manage, and search artists, albums, songs, and record companies with rich interlinked interfaces and modal-based CRUD operations.
+**NexTune** is a full-featured music aggregation platform built with **React** and **Apollo Client**, powered by a custom **GraphQL** backend. It allows users to explore, manage, and search artists, albums, songs, and record companies with rich interlinked interfaces and modal-based CRUD operations.
 
 
 ---
@@ -37,7 +37,7 @@
 
 ## 📂 Folder Structure
 
-harmony-hub/
+NexTune/
 ├── react-client/         # React frontend with Apollo Client
 ├── server/               # GraphQL backend 
 
@@ -48,8 +48,8 @@ harmony-hub/
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/vijaybkhot/harmony-hub.git
-cd harmony-hub
+git clone https://github.com/vijaybkhot/NexTune.git
+cd NexTune
 ```
 
 
