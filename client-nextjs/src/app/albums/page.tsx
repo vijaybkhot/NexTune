@@ -14,6 +14,7 @@ export default async function AlbumsPage() {
     fetchPolicy: "network-only",
   });
 
+  console.log("Albums data loaded:", data?.albums);
   if (!data?.albums) {
     return (
       <PageContainer title="Albums">

@@ -22,13 +22,13 @@ export default async function ArtistsPage() {
     );
   }
 
-  if (data.artists.length === 0) {
-    return (
-      <PageContainer title="Artists">
-        <div className="p-6 text-gray-500">No artists found.</div>
-      </PageContainer>
-    );
-  }
+  // if (data.artists.length === 0) {
+  //   return (
+  //     <PageContainer title="Artists">
+  //       <div className="p-6 text-gray-500">No artists found.</div>
+  //     </PageContainer>
+  //   );
+  // }
 
   return (
     <PageContainer title="Artists">

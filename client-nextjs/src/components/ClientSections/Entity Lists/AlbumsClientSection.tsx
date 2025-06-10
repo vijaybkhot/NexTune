@@ -4,6 +4,9 @@ import { useState } from "react";
 import EntityClientSection from "@/components/ClientSections/Entity Lists/EntitiesClientSection";
 import { useAlbumsQuery } from "@/__generated__/types";
 import type { Album } from "@/__generated__/types";
+import IconButton from "@/components/IconButton";
+import { Plus } from "lucide-react";
+import AddForm from "@/components/Add Forms/AddForm";
 
 export default function AlbumsClientSection() {
   const [showAddForm, setShowAddForm] = useState(false);
@@ -42,22 +45,44 @@ export default function AlbumsClientSection() {
     return (
       <p className="text-center py-10 text-red-500">Error: {error.message}</p>
     );
-  if (!albums.length)
-    return <p className="text-center py-10 text-gray-500">No albums found.</p>;
+  if (!albums.length) {
+    return (
+      <div>
+        {/* Create Button */}
+        <div className="mb-6 flex justify-end">
+          <IconButton
+            icon={Plus}
+            label={`Add Album`}
+            onClick={toggleAddForm}
+            className="bg-blue-600 text-white hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-300 px-4 py-2 rounded-md transition-colors"
+          />
+        </div>
+        {/* Add Form */}
+        {showAddForm && (
+          <div className="mb-8">
+            <AddForm type={"album"} closeAddFormState={toggleAddForm} />
+          </div>
+        )}
+        <p className="text-center py-10 text-gray-500">No albums found.</p>
+      </div>
+    );
+  }
 
   return (
-    <EntityClientSection
-      type="album"
-      data={albums as Album[]}
-      onEdit={handleEditClick}
-      onDelete={handleDeleteClick}
-      selectedItem={selectedAlbum}
-      showEditModal={showEditModal}
-      showDeleteModal={showDeleteModal}
-      handleCloseModals={handleCloseModals}
-      toggleAddForm={toggleAddForm}
-      showAddForm={showAddForm}
-      setSelectedItem={setSelectedAlbum}
-    />
+    <div>
+      <EntityClientSection
+        type="album"
+        data={albums as Album[]}
+        onEdit={handleEditClick}
+        onDelete={handleDeleteClick}
+        selectedItem={selectedAlbum}
+        showEditModal={showEditModal}
+        showDeleteModal={showDeleteModal}
+        handleCloseModals={handleCloseModals}
+        toggleAddForm={toggleAddForm}
+        showAddForm={showAddForm}
+        setSelectedItem={setSelectedAlbum}
+      />
+    </div>
   );
 }
