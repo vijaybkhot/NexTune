@@ -1,19 +1,32 @@
 import { MongoClient } from "mongodb";
 import { mongoConfig } from "./settings.js";
 
-let _connection = undefined;
-let _db = undefined;
+let _client;
+let _db;
 
 const dbConnection = async () => {
-  if (!_connection) {
-    _connection = await MongoClient.connect(mongoConfig.serverUrl);
-    _db = _connection.db(mongoConfig.database);
+  if (!_client) {
+    try {
+      _client = new MongoClient(mongoConfig.serverUrl, {});
+
+      await _client.connect();
+      console.log("✅ Connected to MongoDB");
+
+      _db = _client.db(mongoConfig.database);
+    } catch (error) {
+      console.error("❌ Error connecting to MongoDB:", error);
+      throw error;
+    }
   }
 
   return _db;
 };
+
 const closeConnection = async () => {
-  await _connection.close();
+  if (_client) {
+    await _client.close();
+    console.log("🛑 MongoDB connection closed");
+  }
 };
 
 export { dbConnection, closeConnection };

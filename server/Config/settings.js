@@ -1,4 +1,9 @@
+import dotenv from "dotenv";
+import { MongoClient } from "mongodb";
+
+dotenv.config();
+
 export const mongoConfig = {
-  serverUrl: "mongodb://localhost:27017/",
-  database: "Khot-Vijay-CS554-Lab3",
+  serverUrl: process.env.MONGO_URI,
+  database: "NexTune",
 };

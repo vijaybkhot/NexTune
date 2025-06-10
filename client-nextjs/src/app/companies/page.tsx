@@ -22,13 +22,13 @@ export default async function CompaniesPage() {
     );
   }
 
-  if (data.recordCompanies.length === 0) {
-    return (
-      <PageContainer title="Record Companies">
-        <div className="p-6 text-gray-500">No record companies found.</div>
-      </PageContainer>
-    );
-  }
+  // if (data.recordCompanies.length === 0) {
+  //   return (
+  //     <PageContainer title="Record Companies">
+  //       <div className="p-6 text-gray-500">No record companies found.</div>
+  //     </PageContainer>
+  //   );
+  // }
 
   return (
     <PageContainer title="Record Companies">

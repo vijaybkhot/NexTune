@@ -167,6 +167,16 @@ function AddAlbumRender({ closeAddFormState }: AddAlbumRenderProps) {
     (company): company is RecordCompany => company !== null
   );
 
+  if (!artistData?.artists?.length || !companyData?.recordCompanies?.length) {
+    return (
+      <div>
+        <p>
+          ⚠️ Please add at least one artist and one record company before adding
+          an album.
+        </p>
+      </div>
+    );
+  }
   if (errorAlbum || companyError || artistError)
     return <p>Error loading data</p>;
   if (loadingAlbum || artistLoading || companyLoading)
