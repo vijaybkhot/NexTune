@@ -35,14 +35,6 @@
 
 ---
 
-## 📂 Folder Structure
-
-NexTune/
-├── react-client/         # React frontend with Apollo Client
-├── server/               # GraphQL backend 
-
----
-
 ## 📦 Getting Started
 
 ### 1. Clone the Repo
@@ -97,12 +89,11 @@ Update Apollo Client URI if needed in react-client/src/index.js or your Apollo s
 
 Vijay Khot
 	•	GitHub: @vijaybkhot
-	•	LinkedIn: Vijay Sinh Khot
+	•	LinkedIn: [Vijay Khot](https://www.linkedin.com/in/vijay-khot/)
 
 ⸻
 
 📄 License
 
-This project was created for CS-554 Lab 6 at Stevens Institute of Technology.
-
+This is a solo project developed independently to explore full-stack development.
 ⸻
