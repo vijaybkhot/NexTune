@@ -5,7 +5,7 @@ import {
   albums as albumCollection,
   recordcompanies as recordcompaniesCollection,
   songs as songsCollection,
-} from "../Config/mongoCollections.js";
+} from "../config/mongoCollections.js";
 
 import {
   getDocumentFromCache,
@@ -151,7 +151,7 @@ export const createNewArtist = async (_, args, context) => {
       );
     for (let i in members) {
       members[i] = members[i].trim();
-      if (members[i] === "" || !/^[A-Za-z]+$/.test(members[i])) {
+      if (members[i] === "" || !/^[A-Za-z\s.'-]+$/.test(members[i])) {
         throw invalidInputError(
           "Each member should be a string containing only alphabets and not just blank spaces."
         );
@@ -265,7 +265,7 @@ export const updateArtist = async (_, args, context) => {
 
       for (let i in members) {
         members[i] = members[i].trim();
-        if (members[i] === "" || !/^[A-Za-z]+$/.test(members[i])) {
+        if (members[i] === "" || !/^[A-Za-z\s.'-]+$/.test(members[i])) {
           throw invalidInputError(
             "Each member should be a string containing only alphabets and not just blank spaces."
           );

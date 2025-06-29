@@ -1,71 +1,73 @@
-import { gql } from "@apollo/client";
-import * as Apollo from "@apollo/client";
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>;
-};
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>;
-};
-export type MakeEmpty<
-  T extends { [key: string]: unknown },
-  K extends keyof T
-> = { [_ in K]?: never };
-export type Incremental<T> =
-  | T
-  | {
-      [P in keyof T]?: P extends " $fragmentName" | "__typename" ? T[P] : never;
-    };
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
+export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string };
-  String: { input: string; output: string };
-  Boolean: { input: boolean; output: boolean };
-  Int: { input: number; output: number };
-  Float: { input: number; output: number };
+  ID: { input: string; output: string; }
+  String: { input: string; output: string; }
+  Boolean: { input: boolean; output: boolean; }
+  Int: { input: number; output: number; }
+  Float: { input: number; output: number; }
 };
 
 export type Album = {
-  __typename?: "Album";
-  _id: Scalars["String"]["output"];
+  __typename?: 'Album';
+  _id: Scalars['String']['output'];
   artist: Artist;
   genre: MusicGenre;
   recordCompany: RecordCompany;
-  releaseDate: Scalars["String"]["output"];
+  releaseDate: Scalars['String']['output'];
   songs: Array<Song>;
-  title: Scalars["String"]["output"];
+  title: Scalars['String']['output'];
 };
 
 export type Artist = {
-  __typename?: "Artist";
-  _id: Scalars["String"]["output"];
+  __typename?: 'Artist';
+  _id: Scalars['String']['output'];
   albums: Array<Album>;
-  dateFormed: Scalars["String"]["output"];
-  members: Array<Scalars["String"]["output"]>;
-  name: Scalars["String"]["output"];
-  numOfAlbums?: Maybe<Scalars["Int"]["output"]>;
+  dateFormed: Scalars['String']['output'];
+  members: Array<Scalars['String']['output']>;
+  name: Scalars['String']['output'];
+  numOfAlbums?: Maybe<Scalars['Int']['output']>;
 };
 
 export enum MusicGenre {
-  Alternative = "ALTERNATIVE",
-  Classical = "CLASSICAL",
-  Country = "COUNTRY",
-  Electronic = "ELECTRONIC",
-  HipHop = "HIP_HOP",
-  Indie = "INDIE",
-  Jazz = "JAZZ",
-  Pop = "POP",
-  Rock = "ROCK",
-  RAndB = "R_AND_B",
+  Alternative = 'ALTERNATIVE',
+  Blues = 'BLUES',
+  Classical = 'CLASSICAL',
+  Country = 'COUNTRY',
+  Disco = 'DISCO',
+  Edm = 'EDM',
+  Electronic = 'ELECTRONIC',
+  Folk = 'FOLK',
+  Funk = 'FUNK',
+  HipHop = 'HIP_HOP',
+  Indie = 'INDIE',
+  Jazz = 'JAZZ',
+  KPop = 'K_POP',
+  Latin = 'LATIN',
+  Metal = 'METAL',
+  Opera = 'OPERA',
+  Other = 'OTHER',
+  Pop = 'POP',
+  Punk = 'PUNK',
+  Reggae = 'REGGAE',
+  Rock = 'ROCK',
+  RAndB = 'R_AND_B',
+  Soul = 'SOUL',
+  Soundtrack = 'SOUNDTRACK',
+  World = 'WORLD'
 }
 
 export type Mutation = {
-  __typename?: "Mutation";
+  __typename?: 'Mutation';
   addAlbum?: Maybe<Album>;
   addArtist?: Maybe<Artist>;
   addCompany?: Maybe<RecordCompany>;
@@ -80,81 +82,93 @@ export type Mutation = {
   removeSong?: Maybe<Song>;
 };
 
+
 export type MutationAddAlbumArgs = {
-  artistId: Scalars["String"]["input"];
-  companyId: Scalars["String"]["input"];
+  artistId: Scalars['String']['input'];
+  companyId: Scalars['String']['input'];
   genre: MusicGenre;
-  releaseDate: Scalars["String"]["input"];
-  title: Scalars["String"]["input"];
+  releaseDate: Scalars['String']['input'];
+  title: Scalars['String']['input'];
 };
+
 
 export type MutationAddArtistArgs = {
-  date_formed: Scalars["String"]["input"];
-  members: Array<Scalars["String"]["input"]>;
-  name: Scalars["String"]["input"];
+  date_formed: Scalars['String']['input'];
+  members: Array<Scalars['String']['input']>;
+  name: Scalars['String']['input'];
 };
+
 
 export type MutationAddCompanyArgs = {
-  country: Scalars["String"]["input"];
-  founded_year: Scalars["Int"]["input"];
-  name: Scalars["String"]["input"];
+  country: Scalars['String']['input'];
+  founded_year: Scalars['Int']['input'];
+  name: Scalars['String']['input'];
 };
+
 
 export type MutationAddSongArgs = {
-  albumId: Scalars["String"]["input"];
-  duration: Scalars["String"]["input"];
-  title: Scalars["String"]["input"];
+  albumId: Scalars['String']['input'];
+  duration: Scalars['String']['input'];
+  title: Scalars['String']['input'];
 };
+
 
 export type MutationEditAlbumArgs = {
-  _id: Scalars["String"]["input"];
-  artistId?: InputMaybe<Scalars["String"]["input"]>;
-  companyId?: InputMaybe<Scalars["String"]["input"]>;
+  _id: Scalars['String']['input'];
+  artistId?: InputMaybe<Scalars['String']['input']>;
+  companyId?: InputMaybe<Scalars['String']['input']>;
   genre?: InputMaybe<MusicGenre>;
-  releaseDate?: InputMaybe<Scalars["String"]["input"]>;
-  songs?: InputMaybe<Array<Scalars["String"]["input"]>>;
-  title?: InputMaybe<Scalars["String"]["input"]>;
+  releaseDate?: InputMaybe<Scalars['String']['input']>;
+  songs?: InputMaybe<Array<Scalars['String']['input']>>;
+  title?: InputMaybe<Scalars['String']['input']>;
 };
+
 
 export type MutationEditArtistArgs = {
-  _id: Scalars["String"]["input"];
-  date_formed?: InputMaybe<Scalars["String"]["input"]>;
-  members?: InputMaybe<Array<Scalars["String"]["input"]>>;
-  name?: InputMaybe<Scalars["String"]["input"]>;
+  _id: Scalars['String']['input'];
+  date_formed?: InputMaybe<Scalars['String']['input']>;
+  members?: InputMaybe<Array<Scalars['String']['input']>>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
+
 
 export type MutationEditCompanyArgs = {
-  _id: Scalars["String"]["input"];
-  country?: InputMaybe<Scalars["String"]["input"]>;
-  founded_year?: InputMaybe<Scalars["Int"]["input"]>;
-  name?: InputMaybe<Scalars["String"]["input"]>;
+  _id: Scalars['String']['input'];
+  country?: InputMaybe<Scalars['String']['input']>;
+  founded_year?: InputMaybe<Scalars['Int']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
+
 
 export type MutationEditSongArgs = {
-  _id: Scalars["String"]["input"];
-  albumId?: InputMaybe<Scalars["String"]["input"]>;
-  duration?: InputMaybe<Scalars["String"]["input"]>;
-  title?: InputMaybe<Scalars["String"]["input"]>;
+  _id: Scalars['String']['input'];
+  albumId?: InputMaybe<Scalars['String']['input']>;
+  duration?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
 };
+
 
 export type MutationRemoveAlbumArgs = {
-  _id: Scalars["String"]["input"];
+  _id: Scalars['String']['input'];
 };
+
 
 export type MutationRemoveArtistArgs = {
-  _id: Scalars["String"]["input"];
+  _id: Scalars['String']['input'];
 };
+
 
 export type MutationRemoveCompanyArgs = {
-  _id: Scalars["String"]["input"];
+  _id: Scalars['String']['input'];
 };
 
+
 export type MutationRemoveSongArgs = {
-  _id: Scalars["String"]["input"];
+  _id: Scalars['String']['input'];
 };
 
 export type Query = {
-  __typename?: "Query";
+  __typename?: 'Query';
   albums?: Maybe<Array<Maybe<Album>>>;
   albumsByGenre?: Maybe<Array<Maybe<Album>>>;
   artists?: Maybe<Array<Maybe<Artist>>>;
@@ -170,603 +184,292 @@ export type Query = {
   searchSongByTitle?: Maybe<Array<Maybe<Song>>>;
 };
 
+
 export type QueryAlbumsByGenreArgs = {
   genre: MusicGenre;
 };
 
+
 export type QueryCompanyByFoundedYearArgs = {
-  max: Scalars["Int"]["input"];
-  min: Scalars["Int"]["input"];
+  max: Scalars['Int']['input'];
+  min: Scalars['Int']['input'];
 };
+
 
 export type QueryGetAlbumByIdArgs = {
-  _id: Scalars["String"]["input"];
+  _id: Scalars['String']['input'];
 };
+
 
 export type QueryGetArtistByIdArgs = {
-  _id: Scalars["String"]["input"];
+  _id: Scalars['String']['input'];
 };
+
 
 export type QueryGetCompanyByIdArgs = {
-  _id: Scalars["String"]["input"];
+  _id: Scalars['String']['input'];
 };
+
 
 export type QueryGetSongByIdArgs = {
-  _id: Scalars["String"]["input"];
+  _id: Scalars['String']['input'];
 };
+
 
 export type QueryGetSongsByAlbumIdArgs = {
-  _id: Scalars["String"]["input"];
+  _id: Scalars['String']['input'];
 };
+
 
 export type QueryGetSongsByArtistIdArgs = {
-  artistId: Scalars["String"]["input"];
+  artistId: Scalars['String']['input'];
 };
+
 
 export type QuerySearchArtistByArtistNameArgs = {
-  searchTerm: Scalars["String"]["input"];
+  searchTerm: Scalars['String']['input'];
 };
 
+
 export type QuerySearchSongByTitleArgs = {
-  searchTitleTerm: Scalars["String"]["input"];
+  searchTitleTerm: Scalars['String']['input'];
 };
 
 export type RecordCompany = {
-  __typename?: "RecordCompany";
-  _id: Scalars["String"]["output"];
+  __typename?: 'RecordCompany';
+  _id: Scalars['String']['output'];
   albums: Array<Album>;
-  country?: Maybe<Scalars["String"]["output"]>;
-  foundedYear: Scalars["Int"]["output"];
-  name: Scalars["String"]["output"];
-  numOfAlbums?: Maybe<Scalars["Int"]["output"]>;
+  country?: Maybe<Scalars['String']['output']>;
+  foundedYear: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  numOfAlbums?: Maybe<Scalars['Int']['output']>;
 };
 
 export type Song = {
-  __typename?: "Song";
-  _id: Scalars["String"]["output"];
+  __typename?: 'Song';
+  _id: Scalars['String']['output'];
   album: Album;
-  duration: Scalars["String"]["output"];
-  title: Scalars["String"]["output"];
+  duration: Scalars['String']['output'];
+  title: Scalars['String']['output'];
 };
 
 export type AddAlbumMutationVariables = Exact<{
-  title: Scalars["String"]["input"];
-  releaseDate: Scalars["String"]["input"];
+  title: Scalars['String']['input'];
+  releaseDate: Scalars['String']['input'];
   genre: MusicGenre;
-  artistId: Scalars["String"]["input"];
-  companyId: Scalars["String"]["input"];
+  artistId: Scalars['String']['input'];
+  companyId: Scalars['String']['input'];
 }>;
 
-export type AddAlbumMutation = {
-  __typename?: "Mutation";
-  addAlbum?: {
-    __typename?: "Album";
-    _id: string;
-    title: string;
-    releaseDate: string;
-    genre: MusicGenre;
-    artist: { __typename?: "Artist"; name: string; _id: string };
-    recordCompany: { __typename?: "RecordCompany"; _id: string; name: string };
-    songs: Array<{ __typename?: "Song"; _id: string }>;
-  } | null;
-};
+
+export type AddAlbumMutation = { __typename?: 'Mutation', addAlbum?: { __typename?: 'Album', _id: string, title: string, releaseDate: string, genre: MusicGenre, artist: { __typename?: 'Artist', name: string, _id: string }, recordCompany: { __typename?: 'RecordCompany', _id: string, name: string }, songs: Array<{ __typename?: 'Song', _id: string }> } | null };
 
 export type AddArtistMutationVariables = Exact<{
-  name: Scalars["String"]["input"];
-  dateFormed: Scalars["String"]["input"];
-  members: Array<Scalars["String"]["input"]> | Scalars["String"]["input"];
+  name: Scalars['String']['input'];
+  dateFormed: Scalars['String']['input'];
+  members: Array<Scalars['String']['input']> | Scalars['String']['input'];
 }>;
 
-export type AddArtistMutation = {
-  __typename?: "Mutation";
-  addArtist?: {
-    __typename?: "Artist";
-    _id: string;
-    name: string;
-    dateFormed: string;
-    members: Array<string>;
-    numOfAlbums?: number | null;
-    albums: Array<{ __typename?: "Album"; _id: string; title: string }>;
-  } | null;
-};
+
+export type AddArtistMutation = { __typename?: 'Mutation', addArtist?: { __typename?: 'Artist', _id: string, name: string, dateFormed: string, members: Array<string>, numOfAlbums?: number | null, albums: Array<{ __typename?: 'Album', _id: string, title: string }> } | null };
 
 export type AddCompanyMutationVariables = Exact<{
-  name: Scalars["String"]["input"];
-  foundedYear: Scalars["Int"]["input"];
-  country: Scalars["String"]["input"];
+  name: Scalars['String']['input'];
+  foundedYear: Scalars['Int']['input'];
+  country: Scalars['String']['input'];
 }>;
 
-export type AddCompanyMutation = {
-  __typename?: "Mutation";
-  addCompany?: {
-    __typename?: "RecordCompany";
-    _id: string;
-    name: string;
-    foundedYear: number;
-    country?: string | null;
-    numOfAlbums?: number | null;
-    albums: Array<{ __typename?: "Album"; _id: string; title: string }>;
-  } | null;
-};
+
+export type AddCompanyMutation = { __typename?: 'Mutation', addCompany?: { __typename?: 'RecordCompany', _id: string, name: string, foundedYear: number, country?: string | null, numOfAlbums?: number | null, albums: Array<{ __typename?: 'Album', _id: string, title: string }> } | null };
 
 export type AddSongMutationVariables = Exact<{
-  title: Scalars["String"]["input"];
-  duration: Scalars["String"]["input"];
-  albumId: Scalars["String"]["input"];
+  title: Scalars['String']['input'];
+  duration: Scalars['String']['input'];
+  albumId: Scalars['String']['input'];
 }>;
 
-export type AddSongMutation = {
-  __typename?: "Mutation";
-  addSong?: {
-    __typename?: "Song";
-    _id: string;
-    title: string;
-    duration: string;
-    album: {
-      __typename?: "Album";
-      _id: string;
-      title: string;
-      releaseDate: string;
-    };
-  } | null;
-};
+
+export type AddSongMutation = { __typename?: 'Mutation', addSong?: { __typename?: 'Song', _id: string, title: string, duration: string, album: { __typename?: 'Album', _id: string, title: string, releaseDate: string } } | null };
 
 export type EditAlbumMutationVariables = Exact<{
-  id: Scalars["String"]["input"];
-  title?: InputMaybe<Scalars["String"]["input"]>;
-  releaseDate?: InputMaybe<Scalars["String"]["input"]>;
+  id: Scalars['String']['input'];
+  title?: InputMaybe<Scalars['String']['input']>;
+  releaseDate?: InputMaybe<Scalars['String']['input']>;
   genre?: InputMaybe<MusicGenre>;
-  songs?: InputMaybe<
-    Array<Scalars["String"]["input"]> | Scalars["String"]["input"]
-  >;
-  artistId?: InputMaybe<Scalars["String"]["input"]>;
-  companyId?: InputMaybe<Scalars["String"]["input"]>;
+  songs?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
+  artistId?: InputMaybe<Scalars['String']['input']>;
+  companyId?: InputMaybe<Scalars['String']['input']>;
 }>;
 
-export type EditAlbumMutation = {
-  __typename?: "Mutation";
-  editAlbum?: {
-    __typename?: "Album";
-    _id: string;
-    title: string;
-    releaseDate: string;
-    genre: MusicGenre;
-    artist: { __typename?: "Artist"; _id: string; name: string };
-    recordCompany: { __typename?: "RecordCompany"; _id: string; name: string };
-    songs: Array<{
-      __typename?: "Song";
-      _id: string;
-      title: string;
-      duration: string;
-      album: { __typename?: "Album"; _id: string; title: string };
-    }>;
-  } | null;
-};
+
+export type EditAlbumMutation = { __typename?: 'Mutation', editAlbum?: { __typename?: 'Album', _id: string, title: string, releaseDate: string, genre: MusicGenre, artist: { __typename?: 'Artist', _id: string, name: string }, recordCompany: { __typename?: 'RecordCompany', _id: string, name: string }, songs: Array<{ __typename?: 'Song', _id: string, title: string, duration: string, album: { __typename?: 'Album', _id: string, title: string } }> } | null };
 
 export type EditArtistMutationVariables = Exact<{
-  id: Scalars["String"]["input"];
-  name?: InputMaybe<Scalars["String"]["input"]>;
-  dateFormed?: InputMaybe<Scalars["String"]["input"]>;
-  members?: InputMaybe<
-    Array<Scalars["String"]["input"]> | Scalars["String"]["input"]
-  >;
+  id: Scalars['String']['input'];
+  name?: InputMaybe<Scalars['String']['input']>;
+  dateFormed?: InputMaybe<Scalars['String']['input']>;
+  members?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
 }>;
 
-export type EditArtistMutation = {
-  __typename?: "Mutation";
-  editArtist?: {
-    __typename?: "Artist";
-    _id: string;
-    name: string;
-    dateFormed: string;
-    members: Array<string>;
-  } | null;
-};
+
+export type EditArtistMutation = { __typename?: 'Mutation', editArtist?: { __typename?: 'Artist', _id: string, name: string, dateFormed: string, members: Array<string> } | null };
 
 export type EditCompanyMutationVariables = Exact<{
-  id: Scalars["String"]["input"];
-  name?: InputMaybe<Scalars["String"]["input"]>;
-  foundedYear?: InputMaybe<Scalars["Int"]["input"]>;
-  country?: InputMaybe<Scalars["String"]["input"]>;
+  id: Scalars['String']['input'];
+  name?: InputMaybe<Scalars['String']['input']>;
+  foundedYear?: InputMaybe<Scalars['Int']['input']>;
+  country?: InputMaybe<Scalars['String']['input']>;
 }>;
 
-export type EditCompanyMutation = {
-  __typename?: "Mutation";
-  editCompany?: {
-    __typename?: "RecordCompany";
-    _id: string;
-    name: string;
-    foundedYear: number;
-    country?: string | null;
-    numOfAlbums?: number | null;
-    albums: Array<{ __typename?: "Album"; _id: string; title: string }>;
-  } | null;
-};
+
+export type EditCompanyMutation = { __typename?: 'Mutation', editCompany?: { __typename?: 'RecordCompany', _id: string, name: string, foundedYear: number, country?: string | null, numOfAlbums?: number | null, albums: Array<{ __typename?: 'Album', _id: string, title: string }> } | null };
 
 export type EditSongMutationVariables = Exact<{
-  id: Scalars["String"]["input"];
-  title?: InputMaybe<Scalars["String"]["input"]>;
-  duration?: InputMaybe<Scalars["String"]["input"]>;
-  albumId?: InputMaybe<Scalars["String"]["input"]>;
+  id: Scalars['String']['input'];
+  title?: InputMaybe<Scalars['String']['input']>;
+  duration?: InputMaybe<Scalars['String']['input']>;
+  albumId?: InputMaybe<Scalars['String']['input']>;
 }>;
 
-export type EditSongMutation = {
-  __typename?: "Mutation";
-  editSong?: {
-    __typename?: "Song";
-    _id: string;
-    title: string;
-    duration: string;
-    album: {
-      __typename?: "Album";
-      _id: string;
-      title: string;
-      artist: { __typename?: "Artist"; _id: string; name: string };
-      recordCompany: {
-        __typename?: "RecordCompany";
-        _id: string;
-        name: string;
-      };
-    };
-  } | null;
-};
+
+export type EditSongMutation = { __typename?: 'Mutation', editSong?: { __typename?: 'Song', _id: string, title: string, duration: string, album: { __typename?: 'Album', _id: string, title: string, artist: { __typename?: 'Artist', _id: string, name: string }, recordCompany: { __typename?: 'RecordCompany', _id: string, name: string } } } | null };
 
 export type RemoveAlbumMutationVariables = Exact<{
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 }>;
 
-export type RemoveAlbumMutation = {
-  __typename?: "Mutation";
-  removeAlbum?: {
-    __typename?: "Album";
-    _id: string;
-    title: string;
-    artist: { __typename?: "Artist"; _id: string; name: string };
-    recordCompany: { __typename?: "RecordCompany"; _id: string; name: string };
-    songs: Array<{ __typename?: "Song"; _id: string; title: string }>;
-  } | null;
-};
+
+export type RemoveAlbumMutation = { __typename?: 'Mutation', removeAlbum?: { __typename?: 'Album', _id: string, title: string, artist: { __typename?: 'Artist', _id: string, name: string }, recordCompany: { __typename?: 'RecordCompany', _id: string, name: string }, songs: Array<{ __typename?: 'Song', _id: string, title: string }> } | null };
 
 export type RemoveArtistMutationVariables = Exact<{
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 }>;
 
-export type RemoveArtistMutation = {
-  __typename?: "Mutation";
-  removeArtist?: { __typename?: "Artist"; _id: string; name: string } | null;
-};
+
+export type RemoveArtistMutation = { __typename?: 'Mutation', removeArtist?: { __typename?: 'Artist', _id: string, name: string } | null };
 
 export type RemoveCompanyMutationVariables = Exact<{
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 }>;
 
-export type RemoveCompanyMutation = {
-  __typename?: "Mutation";
-  removeCompany?: {
-    __typename?: "RecordCompany";
-    _id: string;
-    name: string;
-    albums: Array<{ __typename?: "Album"; _id: string; title: string }>;
-  } | null;
-};
+
+export type RemoveCompanyMutation = { __typename?: 'Mutation', removeCompany?: { __typename?: 'RecordCompany', _id: string, name: string, albums: Array<{ __typename?: 'Album', _id: string, title: string }> } | null };
 
 export type RemoveSongMutationVariables = Exact<{
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 }>;
 
-export type RemoveSongMutation = {
-  __typename?: "Mutation";
-  removeSong?: {
-    __typename?: "Song";
-    _id: string;
-    title: string;
-    duration: string;
-    album: {
-      __typename?: "Album";
-      _id: string;
-      title: string;
-      releaseDate: string;
-    };
-  } | null;
-};
 
-export type AlbumsQueryVariables = Exact<{ [key: string]: never }>;
+export type RemoveSongMutation = { __typename?: 'Mutation', removeSong?: { __typename?: 'Song', _id: string, title: string, duration: string, album: { __typename?: 'Album', _id: string, title: string, releaseDate: string } } | null };
 
-export type AlbumsQuery = {
-  __typename?: "Query";
-  albums?: Array<{
-    __typename?: "Album";
-    _id: string;
-    title: string;
-    releaseDate: string;
-    genre: MusicGenre;
-    artist: { __typename?: "Artist"; _id: string; name: string };
-    recordCompany: { __typename?: "RecordCompany"; _id: string; name: string };
-    songs: Array<{ __typename?: "Song"; _id: string; title: string }>;
-  } | null> | null;
-};
+export type AlbumsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AlbumsQuery = { __typename?: 'Query', albums?: Array<{ __typename?: 'Album', _id: string, title: string, releaseDate: string, genre: MusicGenre, artist: { __typename?: 'Artist', _id: string, name: string }, recordCompany: { __typename?: 'RecordCompany', _id: string, name: string }, songs: Array<{ __typename?: 'Song', _id: string, title: string }> } | null> | null };
 
 export type AlbumsByGenreQueryVariables = Exact<{
   genre: MusicGenre;
 }>;
 
-export type AlbumsByGenreQuery = {
-  __typename?: "Query";
-  albumsByGenre?: Array<{
-    __typename?: "Album";
-    _id: string;
-    title: string;
-    releaseDate: string;
-    genre: MusicGenre;
-    artist: { __typename?: "Artist"; _id: string; name: string };
-    recordCompany: { __typename?: "RecordCompany"; _id: string; name: string };
-    songs: Array<{
-      __typename?: "Song";
-      _id: string;
-      title: string;
-      duration: string;
-    }>;
-  } | null> | null;
-};
 
-export type ArtistsQueryVariables = Exact<{ [key: string]: never }>;
+export type AlbumsByGenreQuery = { __typename?: 'Query', albumsByGenre?: Array<{ __typename?: 'Album', _id: string, title: string, releaseDate: string, genre: MusicGenre, artist: { __typename?: 'Artist', _id: string, name: string }, recordCompany: { __typename?: 'RecordCompany', _id: string, name: string }, songs: Array<{ __typename?: 'Song', _id: string, title: string, duration: string }> } | null> | null };
 
-export type ArtistsQuery = {
-  __typename?: "Query";
-  artists?: Array<{
-    __typename?: "Artist";
-    _id: string;
-    name: string;
-    dateFormed: string;
-    members: Array<string>;
-    numOfAlbums?: number | null;
-  } | null> | null;
-};
+export type ArtistsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ArtistsQuery = { __typename?: 'Query', artists?: Array<{ __typename?: 'Artist', _id: string, name: string, dateFormed: string, members: Array<string>, numOfAlbums?: number | null } | null> | null };
 
 export type CompanyByFoundedYearQueryVariables = Exact<{
-  min: Scalars["Int"]["input"];
-  max: Scalars["Int"]["input"];
+  min: Scalars['Int']['input'];
+  max: Scalars['Int']['input'];
 }>;
 
-export type CompanyByFoundedYearQuery = {
-  __typename?: "Query";
-  companyByFoundedYear?: Array<{
-    __typename?: "RecordCompany";
-    _id: string;
-    name: string;
-    foundedYear: number;
-    country?: string | null;
-    numOfAlbums?: number | null;
-    albums: Array<{ __typename?: "Album"; _id: string; title: string }>;
-  } | null> | null;
-};
+
+export type CompanyByFoundedYearQuery = { __typename?: 'Query', companyByFoundedYear?: Array<{ __typename?: 'RecordCompany', _id: string, name: string, foundedYear: number, country?: string | null, numOfAlbums?: number | null, albums: Array<{ __typename?: 'Album', _id: string, title: string }> } | null> | null };
 
 export type GetAlbumByIdQueryVariables = Exact<{
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 }>;
 
-export type GetAlbumByIdQuery = {
-  __typename?: "Query";
-  getAlbumById?: {
-    __typename?: "Album";
-    _id: string;
-    title: string;
-    releaseDate: string;
-    genre: MusicGenre;
-    artist: {
-      __typename?: "Artist";
-      _id: string;
-      name: string;
-      dateFormed: string;
-      members: Array<string>;
-    };
-    recordCompany: {
-      __typename?: "RecordCompany";
-      _id: string;
-      name: string;
-      foundedYear: number;
-      country?: string | null;
-    };
-    songs: Array<{
-      __typename?: "Song";
-      _id: string;
-      title: string;
-      duration: string;
-      album: { __typename?: "Album"; _id: string; title: string };
-    }>;
-  } | null;
-};
+
+export type GetAlbumByIdQuery = { __typename?: 'Query', getAlbumById?: { __typename?: 'Album', _id: string, title: string, releaseDate: string, genre: MusicGenre, artist: { __typename?: 'Artist', _id: string, name: string, dateFormed: string, members: Array<string> }, recordCompany: { __typename?: 'RecordCompany', _id: string, name: string, foundedYear: number, country?: string | null }, songs: Array<{ __typename?: 'Song', _id: string, title: string, duration: string, album: { __typename?: 'Album', _id: string, title: string } }> } | null };
 
 export type GetArtistByIdQueryVariables = Exact<{
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 }>;
 
-export type GetArtistByIdQuery = {
-  __typename?: "Query";
-  getArtistById?: {
-    __typename?: "Artist";
-    _id: string;
-    name: string;
-    dateFormed: string;
-    members: Array<string>;
-    numOfAlbums?: number | null;
-    albums: Array<{
-      __typename?: "Album";
-      _id: string;
-      title: string;
-      genre: MusicGenre;
-      releaseDate: string;
-    }>;
-  } | null;
-};
+
+export type GetArtistByIdQuery = { __typename?: 'Query', getArtistById?: { __typename?: 'Artist', _id: string, name: string, dateFormed: string, members: Array<string>, numOfAlbums?: number | null, albums: Array<{ __typename?: 'Album', _id: string, title: string, genre: MusicGenre, releaseDate: string }> } | null };
 
 export type GetCompanyByIdQueryVariables = Exact<{
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 }>;
 
-export type GetCompanyByIdQuery = {
-  __typename?: "Query";
-  getCompanyById?: {
-    __typename?: "RecordCompany";
-    _id: string;
-    name: string;
-    foundedYear: number;
-    country?: string | null;
-    numOfAlbums?: number | null;
-    albums: Array<{
-      __typename?: "Album";
-      _id: string;
-      title: string;
-      genre: MusicGenre;
-      releaseDate: string;
-      artist: { __typename?: "Artist"; _id: string; name: string };
-      songs: Array<{ __typename?: "Song"; _id: string; title: string }>;
-    }>;
-  } | null;
-};
+
+export type GetCompanyByIdQuery = { __typename?: 'Query', getCompanyById?: { __typename?: 'RecordCompany', _id: string, name: string, foundedYear: number, country?: string | null, numOfAlbums?: number | null, albums: Array<{ __typename?: 'Album', _id: string, title: string, genre: MusicGenre, releaseDate: string, artist: { __typename?: 'Artist', _id: string, name: string }, songs: Array<{ __typename?: 'Song', _id: string, title: string }> }> } | null };
 
 export type GetSongByIdQueryVariables = Exact<{
-  id: Scalars["String"]["input"];
+  id: Scalars['String']['input'];
 }>;
 
-export type GetSongByIdQuery = {
-  __typename?: "Query";
-  getSongById?: {
-    __typename?: "Song";
-    _id: string;
-    title: string;
-    duration: string;
-    album: {
-      __typename?: "Album";
-      _id: string;
-      title: string;
-      releaseDate: string;
-      genre: MusicGenre;
-      artist: { __typename?: "Artist"; _id: string; name: string };
-      recordCompany: {
-        __typename?: "RecordCompany";
-        _id: string;
-        name: string;
-      };
-    };
-  } | null;
-};
+
+export type GetSongByIdQuery = { __typename?: 'Query', getSongById?: { __typename?: 'Song', _id: string, title: string, duration: string, album: { __typename?: 'Album', _id: string, title: string, releaseDate: string, genre: MusicGenre, artist: { __typename?: 'Artist', _id: string, name: string }, recordCompany: { __typename?: 'RecordCompany', _id: string, name: string } } } | null };
 
 export type GetSongsByArtistIdQueryVariables = Exact<{
-  artistId: Scalars["String"]["input"];
+  artistId: Scalars['String']['input'];
 }>;
 
-export type GetSongsByArtistIdQuery = {
-  __typename?: "Query";
-  getSongsByArtistId?: Array<{
-    __typename?: "Song";
-    _id: string;
-    title: string;
-    duration: string;
-    album: {
-      __typename?: "Album";
-      _id: string;
-      title: string;
-      genre: MusicGenre;
-      releaseDate: string;
-      recordCompany: {
-        __typename?: "RecordCompany";
-        _id: string;
-        name: string;
-      };
-    };
-  } | null> | null;
-};
 
-export type RecordCompaniesQueryVariables = Exact<{ [key: string]: never }>;
+export type GetSongsByArtistIdQuery = { __typename?: 'Query', getSongsByArtistId?: Array<{ __typename?: 'Song', _id: string, title: string, duration: string, album: { __typename?: 'Album', _id: string, title: string, genre: MusicGenre, releaseDate: string, recordCompany: { __typename?: 'RecordCompany', _id: string, name: string } } } | null> | null };
 
-export type RecordCompaniesQuery = {
-  __typename?: "Query";
-  recordCompanies?: Array<{
-    __typename?: "RecordCompany";
-    _id: string;
-    name: string;
-    foundedYear: number;
-    country?: string | null;
-    numOfAlbums?: number | null;
-    albums: Array<{ __typename?: "Album"; _id: string; title: string }>;
-  } | null> | null;
-};
+export type RecordCompaniesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type RecordCompaniesQuery = { __typename?: 'Query', recordCompanies?: Array<{ __typename?: 'RecordCompany', _id: string, name: string, foundedYear: number, country?: string | null, numOfAlbums?: number | null, albums: Array<{ __typename?: 'Album', _id: string, title: string }> } | null> | null };
 
 export type SearchArtistByArtistNameQueryVariables = Exact<{
-  searchTerm: Scalars["String"]["input"];
+  searchTerm: Scalars['String']['input'];
 }>;
 
-export type SearchArtistByArtistNameQuery = {
-  __typename?: "Query";
-  searchArtistByArtistName?: Array<{
-    __typename?: "Artist";
-    _id: string;
-    name: string;
-    dateFormed: string;
-    members: Array<string>;
-    numOfAlbums?: number | null;
-    albums: Array<{ __typename?: "Album"; _id: string; title: string }>;
-  } | null> | null;
-};
+
+export type SearchArtistByArtistNameQuery = { __typename?: 'Query', searchArtistByArtistName?: Array<{ __typename?: 'Artist', _id: string, name: string, dateFormed: string, members: Array<string>, numOfAlbums?: number | null, albums: Array<{ __typename?: 'Album', _id: string, title: string }> } | null> | null };
 
 export type SearchSongByTitleQueryVariables = Exact<{
-  searchTitleTerm: Scalars["String"]["input"];
+  searchTitleTerm: Scalars['String']['input'];
 }>;
 
-export type SearchSongByTitleQuery = {
-  __typename?: "Query";
-  searchSongByTitle?: Array<{
-    __typename?: "Song";
-    _id: string;
-    title: string;
-    duration: string;
-    album: {
-      __typename?: "Album";
-      _id: string;
-      title: string;
-      releaseDate: string;
-    };
-  } | null> | null;
-};
+
+export type SearchSongByTitleQuery = { __typename?: 'Query', searchSongByTitle?: Array<{ __typename?: 'Song', _id: string, title: string, duration: string, album: { __typename?: 'Album', _id: string, title: string, releaseDate: string } } | null> | null };
+
 
 export const AddAlbumDocument = gql`
-  mutation AddAlbum(
-    $title: String!
-    $releaseDate: String!
-    $genre: MusicGenre!
-    $artistId: String!
-    $companyId: String!
+    mutation AddAlbum($title: String!, $releaseDate: String!, $genre: MusicGenre!, $artistId: String!, $companyId: String!) {
+  addAlbum(
+    title: $title
+    releaseDate: $releaseDate
+    genre: $genre
+    artistId: $artistId
+    companyId: $companyId
   ) {
-    addAlbum(
-      title: $title
-      releaseDate: $releaseDate
-      genre: $genre
-      artistId: $artistId
-      companyId: $companyId
-    ) {
+    _id
+    title
+    artist {
+      name
       _id
-      title
-      artist {
-        name
-        _id
-      }
-      recordCompany {
-        _id
-        name
-      }
-      releaseDate
-      genre
-      songs {
-        _id
-      }
+    }
+    recordCompany {
+      _id
+      name
+    }
+    releaseDate
+    genre
+    songs {
+      _id
     }
   }
-`;
-export type AddAlbumMutationFn = Apollo.MutationFunction<
-  AddAlbumMutation,
-  AddAlbumMutationVariables
->;
+}
+    `;
+export type AddAlbumMutationFn = Apollo.MutationFunction<AddAlbumMutation, AddAlbumMutationVariables>;
 
 /**
  * __useAddAlbumMutation__
@@ -789,47 +492,29 @@ export type AddAlbumMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useAddAlbumMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    AddAlbumMutation,
-    AddAlbumMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<AddAlbumMutation, AddAlbumMutationVariables>(
-    AddAlbumDocument,
-    options
-  );
-}
+export function useAddAlbumMutation(baseOptions?: Apollo.MutationHookOptions<AddAlbumMutation, AddAlbumMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AddAlbumMutation, AddAlbumMutationVariables>(AddAlbumDocument, options);
+      }
 export type AddAlbumMutationHookResult = ReturnType<typeof useAddAlbumMutation>;
 export type AddAlbumMutationResult = Apollo.MutationResult<AddAlbumMutation>;
-export type AddAlbumMutationOptions = Apollo.BaseMutationOptions<
-  AddAlbumMutation,
-  AddAlbumMutationVariables
->;
+export type AddAlbumMutationOptions = Apollo.BaseMutationOptions<AddAlbumMutation, AddAlbumMutationVariables>;
 export const AddArtistDocument = gql`
-  mutation AddArtist(
-    $name: String!
-    $dateFormed: String!
-    $members: [String!]!
-  ) {
-    addArtist(name: $name, date_formed: $dateFormed, members: $members) {
+    mutation AddArtist($name: String!, $dateFormed: String!, $members: [String!]!) {
+  addArtist(name: $name, date_formed: $dateFormed, members: $members) {
+    _id
+    name
+    dateFormed
+    members
+    albums {
       _id
-      name
-      dateFormed
-      members
-      albums {
-        _id
-        title
-      }
-      numOfAlbums
+      title
     }
+    numOfAlbums
   }
-`;
-export type AddArtistMutationFn = Apollo.MutationFunction<
-  AddArtistMutation,
-  AddArtistMutationVariables
->;
+}
+    `;
+export type AddArtistMutationFn = Apollo.MutationFunction<AddArtistMutation, AddArtistMutationVariables>;
 
 /**
  * __useAddArtistMutation__
@@ -850,45 +535,29 @@ export type AddArtistMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useAddArtistMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    AddArtistMutation,
-    AddArtistMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<AddArtistMutation, AddArtistMutationVariables>(
-    AddArtistDocument,
-    options
-  );
-}
-export type AddArtistMutationHookResult = ReturnType<
-  typeof useAddArtistMutation
->;
-export type AddArtistMutationResult = Apollo.MutationResult<AddArtistMutation>;
-export type AddArtistMutationOptions = Apollo.BaseMutationOptions<
-  AddArtistMutation,
-  AddArtistMutationVariables
->;
-export const AddCompanyDocument = gql`
-  mutation AddCompany($name: String!, $foundedYear: Int!, $country: String!) {
-    addCompany(name: $name, founded_year: $foundedYear, country: $country) {
-      _id
-      name
-      foundedYear
-      country
-      albums {
-        _id
-        title
+export function useAddArtistMutation(baseOptions?: Apollo.MutationHookOptions<AddArtistMutation, AddArtistMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AddArtistMutation, AddArtistMutationVariables>(AddArtistDocument, options);
       }
-      numOfAlbums
+export type AddArtistMutationHookResult = ReturnType<typeof useAddArtistMutation>;
+export type AddArtistMutationResult = Apollo.MutationResult<AddArtistMutation>;
+export type AddArtistMutationOptions = Apollo.BaseMutationOptions<AddArtistMutation, AddArtistMutationVariables>;
+export const AddCompanyDocument = gql`
+    mutation AddCompany($name: String!, $foundedYear: Int!, $country: String!) {
+  addCompany(name: $name, founded_year: $foundedYear, country: $country) {
+    _id
+    name
+    foundedYear
+    country
+    albums {
+      _id
+      title
     }
+    numOfAlbums
   }
-`;
-export type AddCompanyMutationFn = Apollo.MutationFunction<
-  AddCompanyMutation,
-  AddCompanyMutationVariables
->;
+}
+    `;
+export type AddCompanyMutationFn = Apollo.MutationFunction<AddCompanyMutation, AddCompanyMutationVariables>;
 
 /**
  * __useAddCompanyMutation__
@@ -909,45 +578,28 @@ export type AddCompanyMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useAddCompanyMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    AddCompanyMutation,
-    AddCompanyMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<AddCompanyMutation, AddCompanyMutationVariables>(
-    AddCompanyDocument,
-    options
-  );
-}
-export type AddCompanyMutationHookResult = ReturnType<
-  typeof useAddCompanyMutation
->;
-export type AddCompanyMutationResult =
-  Apollo.MutationResult<AddCompanyMutation>;
-export type AddCompanyMutationOptions = Apollo.BaseMutationOptions<
-  AddCompanyMutation,
-  AddCompanyMutationVariables
->;
+export function useAddCompanyMutation(baseOptions?: Apollo.MutationHookOptions<AddCompanyMutation, AddCompanyMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AddCompanyMutation, AddCompanyMutationVariables>(AddCompanyDocument, options);
+      }
+export type AddCompanyMutationHookResult = ReturnType<typeof useAddCompanyMutation>;
+export type AddCompanyMutationResult = Apollo.MutationResult<AddCompanyMutation>;
+export type AddCompanyMutationOptions = Apollo.BaseMutationOptions<AddCompanyMutation, AddCompanyMutationVariables>;
 export const AddSongDocument = gql`
-  mutation AddSong($title: String!, $duration: String!, $albumId: String!) {
-    addSong(title: $title, duration: $duration, albumId: $albumId) {
+    mutation AddSong($title: String!, $duration: String!, $albumId: String!) {
+  addSong(title: $title, duration: $duration, albumId: $albumId) {
+    _id
+    title
+    duration
+    album {
       _id
       title
-      duration
-      album {
-        _id
-        title
-        releaseDate
-      }
+      releaseDate
     }
   }
-`;
-export type AddSongMutationFn = Apollo.MutationFunction<
-  AddSongMutation,
-  AddSongMutationVariables
->;
+}
+    `;
+export type AddSongMutationFn = Apollo.MutationFunction<AddSongMutation, AddSongMutationVariables>;
 
 /**
  * __useAddSongMutation__
@@ -968,71 +620,49 @@ export type AddSongMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useAddSongMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    AddSongMutation,
-    AddSongMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<AddSongMutation, AddSongMutationVariables>(
-    AddSongDocument,
-    options
-  );
-}
+export function useAddSongMutation(baseOptions?: Apollo.MutationHookOptions<AddSongMutation, AddSongMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AddSongMutation, AddSongMutationVariables>(AddSongDocument, options);
+      }
 export type AddSongMutationHookResult = ReturnType<typeof useAddSongMutation>;
 export type AddSongMutationResult = Apollo.MutationResult<AddSongMutation>;
-export type AddSongMutationOptions = Apollo.BaseMutationOptions<
-  AddSongMutation,
-  AddSongMutationVariables
->;
+export type AddSongMutationOptions = Apollo.BaseMutationOptions<AddSongMutation, AddSongMutationVariables>;
 export const EditAlbumDocument = gql`
-  mutation EditAlbum(
-    $id: String!
-    $title: String
-    $releaseDate: String
-    $genre: MusicGenre
-    $songs: [String!]
-    $artistId: String
-    $companyId: String
+    mutation EditAlbum($id: String!, $title: String, $releaseDate: String, $genre: MusicGenre, $songs: [String!], $artistId: String, $companyId: String) {
+  editAlbum(
+    _id: $id
+    title: $title
+    releaseDate: $releaseDate
+    genre: $genre
+    songs: $songs
+    artistId: $artistId
+    companyId: $companyId
   ) {
-    editAlbum(
-      _id: $id
-      title: $title
-      releaseDate: $releaseDate
-      genre: $genre
-      songs: $songs
-      artistId: $artistId
-      companyId: $companyId
-    ) {
+    _id
+    title
+    releaseDate
+    genre
+    artist {
+      _id
+      name
+    }
+    recordCompany {
+      _id
+      name
+    }
+    songs {
       _id
       title
-      releaseDate
-      genre
-      artist {
-        _id
-        name
-      }
-      recordCompany {
-        _id
-        name
-      }
-      songs {
+      duration
+      album {
         _id
         title
-        duration
-        album {
-          _id
-          title
-        }
       }
     }
   }
-`;
-export type EditAlbumMutationFn = Apollo.MutationFunction<
-  EditAlbumMutation,
-  EditAlbumMutationVariables
->;
+}
+    `;
+export type EditAlbumMutationFn = Apollo.MutationFunction<EditAlbumMutation, EditAlbumMutationVariables>;
 
 /**
  * __useEditAlbumMutation__
@@ -1057,50 +687,24 @@ export type EditAlbumMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useEditAlbumMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    EditAlbumMutation,
-    EditAlbumMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<EditAlbumMutation, EditAlbumMutationVariables>(
-    EditAlbumDocument,
-    options
-  );
-}
-export type EditAlbumMutationHookResult = ReturnType<
-  typeof useEditAlbumMutation
->;
+export function useEditAlbumMutation(baseOptions?: Apollo.MutationHookOptions<EditAlbumMutation, EditAlbumMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<EditAlbumMutation, EditAlbumMutationVariables>(EditAlbumDocument, options);
+      }
+export type EditAlbumMutationHookResult = ReturnType<typeof useEditAlbumMutation>;
 export type EditAlbumMutationResult = Apollo.MutationResult<EditAlbumMutation>;
-export type EditAlbumMutationOptions = Apollo.BaseMutationOptions<
-  EditAlbumMutation,
-  EditAlbumMutationVariables
->;
+export type EditAlbumMutationOptions = Apollo.BaseMutationOptions<EditAlbumMutation, EditAlbumMutationVariables>;
 export const EditArtistDocument = gql`
-  mutation EditArtist(
-    $id: String!
-    $name: String
-    $dateFormed: String
-    $members: [String!]
-  ) {
-    editArtist(
-      _id: $id
-      name: $name
-      date_formed: $dateFormed
-      members: $members
-    ) {
-      _id
-      name
-      dateFormed
-      members
-    }
+    mutation EditArtist($id: String!, $name: String, $dateFormed: String, $members: [String!]) {
+  editArtist(_id: $id, name: $name, date_formed: $dateFormed, members: $members) {
+    _id
+    name
+    dateFormed
+    members
   }
-`;
-export type EditArtistMutationFn = Apollo.MutationFunction<
-  EditArtistMutation,
-  EditArtistMutationVariables
->;
+}
+    `;
+export type EditArtistMutationFn = Apollo.MutationFunction<EditArtistMutation, EditArtistMutationVariables>;
 
 /**
  * __useEditArtistMutation__
@@ -1122,56 +726,34 @@ export type EditArtistMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useEditArtistMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    EditArtistMutation,
-    EditArtistMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<EditArtistMutation, EditArtistMutationVariables>(
-    EditArtistDocument,
-    options
-  );
-}
-export type EditArtistMutationHookResult = ReturnType<
-  typeof useEditArtistMutation
->;
-export type EditArtistMutationResult =
-  Apollo.MutationResult<EditArtistMutation>;
-export type EditArtistMutationOptions = Apollo.BaseMutationOptions<
-  EditArtistMutation,
-  EditArtistMutationVariables
->;
-export const EditCompanyDocument = gql`
-  mutation EditCompany(
-    $id: String!
-    $name: String
-    $foundedYear: Int
-    $country: String
-  ) {
-    editCompany(
-      _id: $id
-      name: $name
-      founded_year: $foundedYear
-      country: $country
-    ) {
-      _id
-      name
-      foundedYear
-      country
-      albums {
-        _id
-        title
+export function useEditArtistMutation(baseOptions?: Apollo.MutationHookOptions<EditArtistMutation, EditArtistMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<EditArtistMutation, EditArtistMutationVariables>(EditArtistDocument, options);
       }
-      numOfAlbums
+export type EditArtistMutationHookResult = ReturnType<typeof useEditArtistMutation>;
+export type EditArtistMutationResult = Apollo.MutationResult<EditArtistMutation>;
+export type EditArtistMutationOptions = Apollo.BaseMutationOptions<EditArtistMutation, EditArtistMutationVariables>;
+export const EditCompanyDocument = gql`
+    mutation EditCompany($id: String!, $name: String, $foundedYear: Int, $country: String) {
+  editCompany(
+    _id: $id
+    name: $name
+    founded_year: $foundedYear
+    country: $country
+  ) {
+    _id
+    name
+    foundedYear
+    country
+    albums {
+      _id
+      title
     }
+    numOfAlbums
   }
-`;
-export type EditCompanyMutationFn = Apollo.MutationFunction<
-  EditCompanyMutation,
-  EditCompanyMutationVariables
->;
+}
+    `;
+export type EditCompanyMutationFn = Apollo.MutationFunction<EditCompanyMutation, EditCompanyMutationVariables>;
 
 /**
  * __useEditCompanyMutation__
@@ -1193,57 +775,35 @@ export type EditCompanyMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useEditCompanyMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    EditCompanyMutation,
-    EditCompanyMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<EditCompanyMutation, EditCompanyMutationVariables>(
-    EditCompanyDocument,
-    options
-  );
-}
-export type EditCompanyMutationHookResult = ReturnType<
-  typeof useEditCompanyMutation
->;
-export type EditCompanyMutationResult =
-  Apollo.MutationResult<EditCompanyMutation>;
-export type EditCompanyMutationOptions = Apollo.BaseMutationOptions<
-  EditCompanyMutation,
-  EditCompanyMutationVariables
->;
+export function useEditCompanyMutation(baseOptions?: Apollo.MutationHookOptions<EditCompanyMutation, EditCompanyMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<EditCompanyMutation, EditCompanyMutationVariables>(EditCompanyDocument, options);
+      }
+export type EditCompanyMutationHookResult = ReturnType<typeof useEditCompanyMutation>;
+export type EditCompanyMutationResult = Apollo.MutationResult<EditCompanyMutation>;
+export type EditCompanyMutationOptions = Apollo.BaseMutationOptions<EditCompanyMutation, EditCompanyMutationVariables>;
 export const EditSongDocument = gql`
-  mutation EditSong(
-    $id: String!
-    $title: String
-    $duration: String
-    $albumId: String
-  ) {
-    editSong(_id: $id, title: $title, duration: $duration, albumId: $albumId) {
+    mutation EditSong($id: String!, $title: String, $duration: String, $albumId: String) {
+  editSong(_id: $id, title: $title, duration: $duration, albumId: $albumId) {
+    _id
+    title
+    duration
+    album {
       _id
       title
-      duration
-      album {
+      artist {
         _id
-        title
-        artist {
-          _id
-          name
-        }
-        recordCompany {
-          _id
-          name
-        }
+        name
+      }
+      recordCompany {
+        _id
+        name
       }
     }
   }
-`;
-export type EditSongMutationFn = Apollo.MutationFunction<
-  EditSongMutation,
-  EditSongMutationVariables
->;
+}
+    `;
+export type EditSongMutationFn = Apollo.MutationFunction<EditSongMutation, EditSongMutationVariables>;
 
 /**
  * __useEditSongMutation__
@@ -1265,48 +825,34 @@ export type EditSongMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useEditSongMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    EditSongMutation,
-    EditSongMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<EditSongMutation, EditSongMutationVariables>(
-    EditSongDocument,
-    options
-  );
-}
+export function useEditSongMutation(baseOptions?: Apollo.MutationHookOptions<EditSongMutation, EditSongMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<EditSongMutation, EditSongMutationVariables>(EditSongDocument, options);
+      }
 export type EditSongMutationHookResult = ReturnType<typeof useEditSongMutation>;
 export type EditSongMutationResult = Apollo.MutationResult<EditSongMutation>;
-export type EditSongMutationOptions = Apollo.BaseMutationOptions<
-  EditSongMutation,
-  EditSongMutationVariables
->;
+export type EditSongMutationOptions = Apollo.BaseMutationOptions<EditSongMutation, EditSongMutationVariables>;
 export const RemoveAlbumDocument = gql`
-  mutation RemoveAlbum($id: String!) {
-    removeAlbum(_id: $id) {
+    mutation RemoveAlbum($id: String!) {
+  removeAlbum(_id: $id) {
+    _id
+    artist {
       _id
-      artist {
-        _id
-        name
-      }
-      recordCompany {
-        _id
-        name
-      }
-      songs {
-        _id
-        title
-      }
+      name
+    }
+    recordCompany {
+      _id
+      name
+    }
+    songs {
+      _id
       title
     }
+    title
   }
-`;
-export type RemoveAlbumMutationFn = Apollo.MutationFunction<
-  RemoveAlbumMutation,
-  RemoveAlbumMutationVariables
->;
+}
+    `;
+export type RemoveAlbumMutationFn = Apollo.MutationFunction<RemoveAlbumMutation, RemoveAlbumMutationVariables>;
 
 /**
  * __useRemoveAlbumMutation__
@@ -1325,39 +871,22 @@ export type RemoveAlbumMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useRemoveAlbumMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    RemoveAlbumMutation,
-    RemoveAlbumMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<RemoveAlbumMutation, RemoveAlbumMutationVariables>(
-    RemoveAlbumDocument,
-    options
-  );
-}
-export type RemoveAlbumMutationHookResult = ReturnType<
-  typeof useRemoveAlbumMutation
->;
-export type RemoveAlbumMutationResult =
-  Apollo.MutationResult<RemoveAlbumMutation>;
-export type RemoveAlbumMutationOptions = Apollo.BaseMutationOptions<
-  RemoveAlbumMutation,
-  RemoveAlbumMutationVariables
->;
+export function useRemoveAlbumMutation(baseOptions?: Apollo.MutationHookOptions<RemoveAlbumMutation, RemoveAlbumMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<RemoveAlbumMutation, RemoveAlbumMutationVariables>(RemoveAlbumDocument, options);
+      }
+export type RemoveAlbumMutationHookResult = ReturnType<typeof useRemoveAlbumMutation>;
+export type RemoveAlbumMutationResult = Apollo.MutationResult<RemoveAlbumMutation>;
+export type RemoveAlbumMutationOptions = Apollo.BaseMutationOptions<RemoveAlbumMutation, RemoveAlbumMutationVariables>;
 export const RemoveArtistDocument = gql`
-  mutation RemoveArtist($id: String!) {
-    removeArtist(_id: $id) {
-      _id
-      name
-    }
+    mutation RemoveArtist($id: String!) {
+  removeArtist(_id: $id) {
+    _id
+    name
   }
-`;
-export type RemoveArtistMutationFn = Apollo.MutationFunction<
-  RemoveArtistMutation,
-  RemoveArtistMutationVariables
->;
+}
+    `;
+export type RemoveArtistMutationFn = Apollo.MutationFunction<RemoveArtistMutation, RemoveArtistMutationVariables>;
 
 /**
  * __useRemoveArtistMutation__
@@ -1376,43 +905,26 @@ export type RemoveArtistMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useRemoveArtistMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    RemoveArtistMutation,
-    RemoveArtistMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    RemoveArtistMutation,
-    RemoveArtistMutationVariables
-  >(RemoveArtistDocument, options);
-}
-export type RemoveArtistMutationHookResult = ReturnType<
-  typeof useRemoveArtistMutation
->;
-export type RemoveArtistMutationResult =
-  Apollo.MutationResult<RemoveArtistMutation>;
-export type RemoveArtistMutationOptions = Apollo.BaseMutationOptions<
-  RemoveArtistMutation,
-  RemoveArtistMutationVariables
->;
-export const RemoveCompanyDocument = gql`
-  mutation RemoveCompany($id: String!) {
-    removeCompany(_id: $id) {
-      _id
-      name
-      albums {
-        _id
-        title
+export function useRemoveArtistMutation(baseOptions?: Apollo.MutationHookOptions<RemoveArtistMutation, RemoveArtistMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<RemoveArtistMutation, RemoveArtistMutationVariables>(RemoveArtistDocument, options);
       }
+export type RemoveArtistMutationHookResult = ReturnType<typeof useRemoveArtistMutation>;
+export type RemoveArtistMutationResult = Apollo.MutationResult<RemoveArtistMutation>;
+export type RemoveArtistMutationOptions = Apollo.BaseMutationOptions<RemoveArtistMutation, RemoveArtistMutationVariables>;
+export const RemoveCompanyDocument = gql`
+    mutation RemoveCompany($id: String!) {
+  removeCompany(_id: $id) {
+    _id
+    name
+    albums {
+      _id
+      title
     }
   }
-`;
-export type RemoveCompanyMutationFn = Apollo.MutationFunction<
-  RemoveCompanyMutation,
-  RemoveCompanyMutationVariables
->;
+}
+    `;
+export type RemoveCompanyMutationFn = Apollo.MutationFunction<RemoveCompanyMutation, RemoveCompanyMutationVariables>;
 
 /**
  * __useRemoveCompanyMutation__
@@ -1431,45 +943,28 @@ export type RemoveCompanyMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useRemoveCompanyMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    RemoveCompanyMutation,
-    RemoveCompanyMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    RemoveCompanyMutation,
-    RemoveCompanyMutationVariables
-  >(RemoveCompanyDocument, options);
-}
-export type RemoveCompanyMutationHookResult = ReturnType<
-  typeof useRemoveCompanyMutation
->;
-export type RemoveCompanyMutationResult =
-  Apollo.MutationResult<RemoveCompanyMutation>;
-export type RemoveCompanyMutationOptions = Apollo.BaseMutationOptions<
-  RemoveCompanyMutation,
-  RemoveCompanyMutationVariables
->;
+export function useRemoveCompanyMutation(baseOptions?: Apollo.MutationHookOptions<RemoveCompanyMutation, RemoveCompanyMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<RemoveCompanyMutation, RemoveCompanyMutationVariables>(RemoveCompanyDocument, options);
+      }
+export type RemoveCompanyMutationHookResult = ReturnType<typeof useRemoveCompanyMutation>;
+export type RemoveCompanyMutationResult = Apollo.MutationResult<RemoveCompanyMutation>;
+export type RemoveCompanyMutationOptions = Apollo.BaseMutationOptions<RemoveCompanyMutation, RemoveCompanyMutationVariables>;
 export const RemoveSongDocument = gql`
-  mutation RemoveSong($id: String!) {
-    removeSong(_id: $id) {
+    mutation RemoveSong($id: String!) {
+  removeSong(_id: $id) {
+    _id
+    title
+    duration
+    album {
       _id
       title
-      duration
-      album {
-        _id
-        title
-        releaseDate
-      }
+      releaseDate
     }
   }
-`;
-export type RemoveSongMutationFn = Apollo.MutationFunction<
-  RemoveSongMutation,
-  RemoveSongMutationVariables
->;
+}
+    `;
+export type RemoveSongMutationFn = Apollo.MutationFunction<RemoveSongMutation, RemoveSongMutationVariables>;
 
 /**
  * __useRemoveSongMutation__
@@ -1488,49 +983,35 @@ export type RemoveSongMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useRemoveSongMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    RemoveSongMutation,
-    RemoveSongMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<RemoveSongMutation, RemoveSongMutationVariables>(
-    RemoveSongDocument,
-    options
-  );
-}
-export type RemoveSongMutationHookResult = ReturnType<
-  typeof useRemoveSongMutation
->;
-export type RemoveSongMutationResult =
-  Apollo.MutationResult<RemoveSongMutation>;
-export type RemoveSongMutationOptions = Apollo.BaseMutationOptions<
-  RemoveSongMutation,
-  RemoveSongMutationVariables
->;
+export function useRemoveSongMutation(baseOptions?: Apollo.MutationHookOptions<RemoveSongMutation, RemoveSongMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<RemoveSongMutation, RemoveSongMutationVariables>(RemoveSongDocument, options);
+      }
+export type RemoveSongMutationHookResult = ReturnType<typeof useRemoveSongMutation>;
+export type RemoveSongMutationResult = Apollo.MutationResult<RemoveSongMutation>;
+export type RemoveSongMutationOptions = Apollo.BaseMutationOptions<RemoveSongMutation, RemoveSongMutationVariables>;
 export const AlbumsDocument = gql`
-  query Albums {
-    albums {
+    query Albums {
+  albums {
+    _id
+    title
+    releaseDate
+    genre
+    artist {
+      _id
+      name
+    }
+    recordCompany {
+      _id
+      name
+    }
+    songs {
       _id
       title
-      releaseDate
-      genre
-      artist {
-        _id
-        name
-      }
-      recordCompany {
-        _id
-        name
-      }
-      songs {
-        _id
-        title
-      }
     }
   }
-`;
+}
+    `;
 
 /**
  * __useAlbumsQuery__
@@ -1547,70 +1028,45 @@ export const AlbumsDocument = gql`
  *   },
  * });
  */
-export function useAlbumsQuery(
-  baseOptions?: Apollo.QueryHookOptions<AlbumsQuery, AlbumsQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<AlbumsQuery, AlbumsQueryVariables>(
-    AlbumsDocument,
-    options
-  );
-}
-export function useAlbumsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<AlbumsQuery, AlbumsQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<AlbumsQuery, AlbumsQueryVariables>(
-    AlbumsDocument,
-    options
-  );
-}
-export function useAlbumsSuspenseQuery(
-  baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<AlbumsQuery, AlbumsQueryVariables>
-) {
-  const options =
-    baseOptions === Apollo.skipToken
-      ? baseOptions
-      : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<AlbumsQuery, AlbumsQueryVariables>(
-    AlbumsDocument,
-    options
-  );
-}
+export function useAlbumsQuery(baseOptions?: Apollo.QueryHookOptions<AlbumsQuery, AlbumsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<AlbumsQuery, AlbumsQueryVariables>(AlbumsDocument, options);
+      }
+export function useAlbumsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AlbumsQuery, AlbumsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<AlbumsQuery, AlbumsQueryVariables>(AlbumsDocument, options);
+        }
+export function useAlbumsSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<AlbumsQuery, AlbumsQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<AlbumsQuery, AlbumsQueryVariables>(AlbumsDocument, options);
+        }
 export type AlbumsQueryHookResult = ReturnType<typeof useAlbumsQuery>;
 export type AlbumsLazyQueryHookResult = ReturnType<typeof useAlbumsLazyQuery>;
-export type AlbumsSuspenseQueryHookResult = ReturnType<
-  typeof useAlbumsSuspenseQuery
->;
-export type AlbumsQueryResult = Apollo.QueryResult<
-  AlbumsQuery,
-  AlbumsQueryVariables
->;
+export type AlbumsSuspenseQueryHookResult = ReturnType<typeof useAlbumsSuspenseQuery>;
+export type AlbumsQueryResult = Apollo.QueryResult<AlbumsQuery, AlbumsQueryVariables>;
 export const AlbumsByGenreDocument = gql`
-  query AlbumsByGenre($genre: MusicGenre!) {
-    albumsByGenre(genre: $genre) {
+    query AlbumsByGenre($genre: MusicGenre!) {
+  albumsByGenre(genre: $genre) {
+    _id
+    title
+    releaseDate
+    genre
+    artist {
+      _id
+      name
+    }
+    recordCompany {
+      _id
+      name
+    }
+    songs {
       _id
       title
-      releaseDate
-      genre
-      artist {
-        _id
-        name
-      }
-      recordCompany {
-        _id
-        name
-      }
-      songs {
-        _id
-        title
-        duration
-      }
+      duration
     }
   }
-`;
+}
+    `;
 
 /**
  * __useAlbumsByGenreQuery__
@@ -1628,75 +1084,33 @@ export const AlbumsByGenreDocument = gql`
  *   },
  * });
  */
-export function useAlbumsByGenreQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    AlbumsByGenreQuery,
-    AlbumsByGenreQueryVariables
-  > &
-    (
-      | { variables: AlbumsByGenreQueryVariables; skip?: boolean }
-      | { skip: boolean }
-    )
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<AlbumsByGenreQuery, AlbumsByGenreQueryVariables>(
-    AlbumsByGenreDocument,
-    options
-  );
-}
-export function useAlbumsByGenreLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    AlbumsByGenreQuery,
-    AlbumsByGenreQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<AlbumsByGenreQuery, AlbumsByGenreQueryVariables>(
-    AlbumsByGenreDocument,
-    options
-  );
-}
-export function useAlbumsByGenreSuspenseQuery(
-  baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<
-        AlbumsByGenreQuery,
-        AlbumsByGenreQueryVariables
-      >
-) {
-  const options =
-    baseOptions === Apollo.skipToken
-      ? baseOptions
-      : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<
-    AlbumsByGenreQuery,
-    AlbumsByGenreQueryVariables
-  >(AlbumsByGenreDocument, options);
-}
-export type AlbumsByGenreQueryHookResult = ReturnType<
-  typeof useAlbumsByGenreQuery
->;
-export type AlbumsByGenreLazyQueryHookResult = ReturnType<
-  typeof useAlbumsByGenreLazyQuery
->;
-export type AlbumsByGenreSuspenseQueryHookResult = ReturnType<
-  typeof useAlbumsByGenreSuspenseQuery
->;
-export type AlbumsByGenreQueryResult = Apollo.QueryResult<
-  AlbumsByGenreQuery,
-  AlbumsByGenreQueryVariables
->;
+export function useAlbumsByGenreQuery(baseOptions: Apollo.QueryHookOptions<AlbumsByGenreQuery, AlbumsByGenreQueryVariables> & ({ variables: AlbumsByGenreQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<AlbumsByGenreQuery, AlbumsByGenreQueryVariables>(AlbumsByGenreDocument, options);
+      }
+export function useAlbumsByGenreLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AlbumsByGenreQuery, AlbumsByGenreQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<AlbumsByGenreQuery, AlbumsByGenreQueryVariables>(AlbumsByGenreDocument, options);
+        }
+export function useAlbumsByGenreSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<AlbumsByGenreQuery, AlbumsByGenreQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<AlbumsByGenreQuery, AlbumsByGenreQueryVariables>(AlbumsByGenreDocument, options);
+        }
+export type AlbumsByGenreQueryHookResult = ReturnType<typeof useAlbumsByGenreQuery>;
+export type AlbumsByGenreLazyQueryHookResult = ReturnType<typeof useAlbumsByGenreLazyQuery>;
+export type AlbumsByGenreSuspenseQueryHookResult = ReturnType<typeof useAlbumsByGenreSuspenseQuery>;
+export type AlbumsByGenreQueryResult = Apollo.QueryResult<AlbumsByGenreQuery, AlbumsByGenreQueryVariables>;
 export const ArtistsDocument = gql`
-  query Artists {
-    artists {
-      _id
-      name
-      dateFormed
-      members
-      numOfAlbums
-    }
+    query Artists {
+  artists {
+    _id
+    name
+    dateFormed
+    members
+    numOfAlbums
   }
-`;
+}
+    `;
 
 /**
  * __useArtistsQuery__
@@ -1713,62 +1127,37 @@ export const ArtistsDocument = gql`
  *   },
  * });
  */
-export function useArtistsQuery(
-  baseOptions?: Apollo.QueryHookOptions<ArtistsQuery, ArtistsQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<ArtistsQuery, ArtistsQueryVariables>(
-    ArtistsDocument,
-    options
-  );
-}
-export function useArtistsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<ArtistsQuery, ArtistsQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<ArtistsQuery, ArtistsQueryVariables>(
-    ArtistsDocument,
-    options
-  );
-}
-export function useArtistsSuspenseQuery(
-  baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<ArtistsQuery, ArtistsQueryVariables>
-) {
-  const options =
-    baseOptions === Apollo.skipToken
-      ? baseOptions
-      : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<ArtistsQuery, ArtistsQueryVariables>(
-    ArtistsDocument,
-    options
-  );
-}
+export function useArtistsQuery(baseOptions?: Apollo.QueryHookOptions<ArtistsQuery, ArtistsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ArtistsQuery, ArtistsQueryVariables>(ArtistsDocument, options);
+      }
+export function useArtistsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ArtistsQuery, ArtistsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ArtistsQuery, ArtistsQueryVariables>(ArtistsDocument, options);
+        }
+export function useArtistsSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<ArtistsQuery, ArtistsQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<ArtistsQuery, ArtistsQueryVariables>(ArtistsDocument, options);
+        }
 export type ArtistsQueryHookResult = ReturnType<typeof useArtistsQuery>;
 export type ArtistsLazyQueryHookResult = ReturnType<typeof useArtistsLazyQuery>;
-export type ArtistsSuspenseQueryHookResult = ReturnType<
-  typeof useArtistsSuspenseQuery
->;
-export type ArtistsQueryResult = Apollo.QueryResult<
-  ArtistsQuery,
-  ArtistsQueryVariables
->;
+export type ArtistsSuspenseQueryHookResult = ReturnType<typeof useArtistsSuspenseQuery>;
+export type ArtistsQueryResult = Apollo.QueryResult<ArtistsQuery, ArtistsQueryVariables>;
 export const CompanyByFoundedYearDocument = gql`
-  query CompanyByFoundedYear($min: Int!, $max: Int!) {
-    companyByFoundedYear(min: $min, max: $max) {
+    query CompanyByFoundedYear($min: Int!, $max: Int!) {
+  companyByFoundedYear(min: $min, max: $max) {
+    _id
+    name
+    foundedYear
+    country
+    albums {
       _id
-      name
-      foundedYear
-      country
-      albums {
-        _id
-        title
-      }
-      numOfAlbums
+      title
     }
+    numOfAlbums
   }
-`;
+}
+    `;
 
 /**
  * __useCompanyByFoundedYearQuery__
@@ -1787,95 +1176,53 @@ export const CompanyByFoundedYearDocument = gql`
  *   },
  * });
  */
-export function useCompanyByFoundedYearQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    CompanyByFoundedYearQuery,
-    CompanyByFoundedYearQueryVariables
-  > &
-    (
-      | { variables: CompanyByFoundedYearQueryVariables; skip?: boolean }
-      | { skip: boolean }
-    )
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    CompanyByFoundedYearQuery,
-    CompanyByFoundedYearQueryVariables
-  >(CompanyByFoundedYearDocument, options);
-}
-export function useCompanyByFoundedYearLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    CompanyByFoundedYearQuery,
-    CompanyByFoundedYearQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    CompanyByFoundedYearQuery,
-    CompanyByFoundedYearQueryVariables
-  >(CompanyByFoundedYearDocument, options);
-}
-export function useCompanyByFoundedYearSuspenseQuery(
-  baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<
-        CompanyByFoundedYearQuery,
-        CompanyByFoundedYearQueryVariables
-      >
-) {
-  const options =
-    baseOptions === Apollo.skipToken
-      ? baseOptions
-      : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<
-    CompanyByFoundedYearQuery,
-    CompanyByFoundedYearQueryVariables
-  >(CompanyByFoundedYearDocument, options);
-}
-export type CompanyByFoundedYearQueryHookResult = ReturnType<
-  typeof useCompanyByFoundedYearQuery
->;
-export type CompanyByFoundedYearLazyQueryHookResult = ReturnType<
-  typeof useCompanyByFoundedYearLazyQuery
->;
-export type CompanyByFoundedYearSuspenseQueryHookResult = ReturnType<
-  typeof useCompanyByFoundedYearSuspenseQuery
->;
-export type CompanyByFoundedYearQueryResult = Apollo.QueryResult<
-  CompanyByFoundedYearQuery,
-  CompanyByFoundedYearQueryVariables
->;
+export function useCompanyByFoundedYearQuery(baseOptions: Apollo.QueryHookOptions<CompanyByFoundedYearQuery, CompanyByFoundedYearQueryVariables> & ({ variables: CompanyByFoundedYearQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<CompanyByFoundedYearQuery, CompanyByFoundedYearQueryVariables>(CompanyByFoundedYearDocument, options);
+      }
+export function useCompanyByFoundedYearLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CompanyByFoundedYearQuery, CompanyByFoundedYearQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<CompanyByFoundedYearQuery, CompanyByFoundedYearQueryVariables>(CompanyByFoundedYearDocument, options);
+        }
+export function useCompanyByFoundedYearSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<CompanyByFoundedYearQuery, CompanyByFoundedYearQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<CompanyByFoundedYearQuery, CompanyByFoundedYearQueryVariables>(CompanyByFoundedYearDocument, options);
+        }
+export type CompanyByFoundedYearQueryHookResult = ReturnType<typeof useCompanyByFoundedYearQuery>;
+export type CompanyByFoundedYearLazyQueryHookResult = ReturnType<typeof useCompanyByFoundedYearLazyQuery>;
+export type CompanyByFoundedYearSuspenseQueryHookResult = ReturnType<typeof useCompanyByFoundedYearSuspenseQuery>;
+export type CompanyByFoundedYearQueryResult = Apollo.QueryResult<CompanyByFoundedYearQuery, CompanyByFoundedYearQueryVariables>;
 export const GetAlbumByIdDocument = gql`
-  query GetAlbumById($id: String!) {
-    getAlbumById(_id: $id) {
+    query GetAlbumById($id: String!) {
+  getAlbumById(_id: $id) {
+    _id
+    title
+    releaseDate
+    genre
+    artist {
+      _id
+      name
+      dateFormed
+      members
+    }
+    recordCompany {
+      _id
+      name
+      foundedYear
+      country
+    }
+    songs {
       _id
       title
-      releaseDate
-      genre
-      artist {
-        _id
-        name
-        dateFormed
-        members
-      }
-      recordCompany {
-        _id
-        name
-        foundedYear
-        country
-      }
-      songs {
+      duration
+      album {
         _id
         title
-        duration
-        album {
-          _id
-          title
-        }
       }
     }
   }
-`;
+}
+    `;
 
 /**
  * __useGetAlbumByIdQuery__
@@ -1893,81 +1240,39 @@ export const GetAlbumByIdDocument = gql`
  *   },
  * });
  */
-export function useGetAlbumByIdQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    GetAlbumByIdQuery,
-    GetAlbumByIdQueryVariables
-  > &
-    (
-      | { variables: GetAlbumByIdQueryVariables; skip?: boolean }
-      | { skip: boolean }
-    )
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetAlbumByIdQuery, GetAlbumByIdQueryVariables>(
-    GetAlbumByIdDocument,
-    options
-  );
-}
-export function useGetAlbumByIdLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetAlbumByIdQuery,
-    GetAlbumByIdQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetAlbumByIdQuery, GetAlbumByIdQueryVariables>(
-    GetAlbumByIdDocument,
-    options
-  );
-}
-export function useGetAlbumByIdSuspenseQuery(
-  baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<
-        GetAlbumByIdQuery,
-        GetAlbumByIdQueryVariables
-      >
-) {
-  const options =
-    baseOptions === Apollo.skipToken
-      ? baseOptions
-      : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<GetAlbumByIdQuery, GetAlbumByIdQueryVariables>(
-    GetAlbumByIdDocument,
-    options
-  );
-}
-export type GetAlbumByIdQueryHookResult = ReturnType<
-  typeof useGetAlbumByIdQuery
->;
-export type GetAlbumByIdLazyQueryHookResult = ReturnType<
-  typeof useGetAlbumByIdLazyQuery
->;
-export type GetAlbumByIdSuspenseQueryHookResult = ReturnType<
-  typeof useGetAlbumByIdSuspenseQuery
->;
-export type GetAlbumByIdQueryResult = Apollo.QueryResult<
-  GetAlbumByIdQuery,
-  GetAlbumByIdQueryVariables
->;
-export const GetArtistByIdDocument = gql`
-  query GetArtistById($id: String!) {
-    getArtistById(_id: $id) {
-      _id
-      name
-      dateFormed
-      members
-      numOfAlbums
-      albums {
-        _id
-        title
-        genre
-        releaseDate
+export function useGetAlbumByIdQuery(baseOptions: Apollo.QueryHookOptions<GetAlbumByIdQuery, GetAlbumByIdQueryVariables> & ({ variables: GetAlbumByIdQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAlbumByIdQuery, GetAlbumByIdQueryVariables>(GetAlbumByIdDocument, options);
       }
+export function useGetAlbumByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAlbumByIdQuery, GetAlbumByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAlbumByIdQuery, GetAlbumByIdQueryVariables>(GetAlbumByIdDocument, options);
+        }
+export function useGetAlbumByIdSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetAlbumByIdQuery, GetAlbumByIdQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetAlbumByIdQuery, GetAlbumByIdQueryVariables>(GetAlbumByIdDocument, options);
+        }
+export type GetAlbumByIdQueryHookResult = ReturnType<typeof useGetAlbumByIdQuery>;
+export type GetAlbumByIdLazyQueryHookResult = ReturnType<typeof useGetAlbumByIdLazyQuery>;
+export type GetAlbumByIdSuspenseQueryHookResult = ReturnType<typeof useGetAlbumByIdSuspenseQuery>;
+export type GetAlbumByIdQueryResult = Apollo.QueryResult<GetAlbumByIdQuery, GetAlbumByIdQueryVariables>;
+export const GetArtistByIdDocument = gql`
+    query GetArtistById($id: String!) {
+  getArtistById(_id: $id) {
+    _id
+    name
+    dateFormed
+    members
+    numOfAlbums
+    albums {
+      _id
+      title
+      genre
+      releaseDate
     }
   }
-`;
+}
+    `;
 
 /**
  * __useGetArtistByIdQuery__
@@ -1985,89 +1290,47 @@ export const GetArtistByIdDocument = gql`
  *   },
  * });
  */
-export function useGetArtistByIdQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    GetArtistByIdQuery,
-    GetArtistByIdQueryVariables
-  > &
-    (
-      | { variables: GetArtistByIdQueryVariables; skip?: boolean }
-      | { skip: boolean }
-    )
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetArtistByIdQuery, GetArtistByIdQueryVariables>(
-    GetArtistByIdDocument,
-    options
-  );
-}
-export function useGetArtistByIdLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetArtistByIdQuery,
-    GetArtistByIdQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetArtistByIdQuery, GetArtistByIdQueryVariables>(
-    GetArtistByIdDocument,
-    options
-  );
-}
-export function useGetArtistByIdSuspenseQuery(
-  baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<
-        GetArtistByIdQuery,
-        GetArtistByIdQueryVariables
-      >
-) {
-  const options =
-    baseOptions === Apollo.skipToken
-      ? baseOptions
-      : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<
-    GetArtistByIdQuery,
-    GetArtistByIdQueryVariables
-  >(GetArtistByIdDocument, options);
-}
-export type GetArtistByIdQueryHookResult = ReturnType<
-  typeof useGetArtistByIdQuery
->;
-export type GetArtistByIdLazyQueryHookResult = ReturnType<
-  typeof useGetArtistByIdLazyQuery
->;
-export type GetArtistByIdSuspenseQueryHookResult = ReturnType<
-  typeof useGetArtistByIdSuspenseQuery
->;
-export type GetArtistByIdQueryResult = Apollo.QueryResult<
-  GetArtistByIdQuery,
-  GetArtistByIdQueryVariables
->;
+export function useGetArtistByIdQuery(baseOptions: Apollo.QueryHookOptions<GetArtistByIdQuery, GetArtistByIdQueryVariables> & ({ variables: GetArtistByIdQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetArtistByIdQuery, GetArtistByIdQueryVariables>(GetArtistByIdDocument, options);
+      }
+export function useGetArtistByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetArtistByIdQuery, GetArtistByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetArtistByIdQuery, GetArtistByIdQueryVariables>(GetArtistByIdDocument, options);
+        }
+export function useGetArtistByIdSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetArtistByIdQuery, GetArtistByIdQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetArtistByIdQuery, GetArtistByIdQueryVariables>(GetArtistByIdDocument, options);
+        }
+export type GetArtistByIdQueryHookResult = ReturnType<typeof useGetArtistByIdQuery>;
+export type GetArtistByIdLazyQueryHookResult = ReturnType<typeof useGetArtistByIdLazyQuery>;
+export type GetArtistByIdSuspenseQueryHookResult = ReturnType<typeof useGetArtistByIdSuspenseQuery>;
+export type GetArtistByIdQueryResult = Apollo.QueryResult<GetArtistByIdQuery, GetArtistByIdQueryVariables>;
 export const GetCompanyByIdDocument = gql`
-  query GetCompanyById($id: String!) {
-    getCompanyById(_id: $id) {
+    query GetCompanyById($id: String!) {
+  getCompanyById(_id: $id) {
+    _id
+    name
+    foundedYear
+    country
+    numOfAlbums
+    albums {
       _id
-      name
-      foundedYear
-      country
-      numOfAlbums
-      albums {
+      title
+      genre
+      releaseDate
+      artist {
+        _id
+        name
+      }
+      songs {
         _id
         title
-        genre
-        releaseDate
-        artist {
-          _id
-          name
-        }
-        songs {
-          _id
-          title
-        }
       }
     }
   }
-`;
+}
+    `;
 
 /**
  * __useGetCompanyByIdQuery__
@@ -2085,87 +1348,45 @@ export const GetCompanyByIdDocument = gql`
  *   },
  * });
  */
-export function useGetCompanyByIdQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    GetCompanyByIdQuery,
-    GetCompanyByIdQueryVariables
-  > &
-    (
-      | { variables: GetCompanyByIdQueryVariables; skip?: boolean }
-      | { skip: boolean }
-    )
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetCompanyByIdQuery, GetCompanyByIdQueryVariables>(
-    GetCompanyByIdDocument,
-    options
-  );
-}
-export function useGetCompanyByIdLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetCompanyByIdQuery,
-    GetCompanyByIdQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetCompanyByIdQuery, GetCompanyByIdQueryVariables>(
-    GetCompanyByIdDocument,
-    options
-  );
-}
-export function useGetCompanyByIdSuspenseQuery(
-  baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<
-        GetCompanyByIdQuery,
-        GetCompanyByIdQueryVariables
-      >
-) {
-  const options =
-    baseOptions === Apollo.skipToken
-      ? baseOptions
-      : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<
-    GetCompanyByIdQuery,
-    GetCompanyByIdQueryVariables
-  >(GetCompanyByIdDocument, options);
-}
-export type GetCompanyByIdQueryHookResult = ReturnType<
-  typeof useGetCompanyByIdQuery
->;
-export type GetCompanyByIdLazyQueryHookResult = ReturnType<
-  typeof useGetCompanyByIdLazyQuery
->;
-export type GetCompanyByIdSuspenseQueryHookResult = ReturnType<
-  typeof useGetCompanyByIdSuspenseQuery
->;
-export type GetCompanyByIdQueryResult = Apollo.QueryResult<
-  GetCompanyByIdQuery,
-  GetCompanyByIdQueryVariables
->;
+export function useGetCompanyByIdQuery(baseOptions: Apollo.QueryHookOptions<GetCompanyByIdQuery, GetCompanyByIdQueryVariables> & ({ variables: GetCompanyByIdQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCompanyByIdQuery, GetCompanyByIdQueryVariables>(GetCompanyByIdDocument, options);
+      }
+export function useGetCompanyByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCompanyByIdQuery, GetCompanyByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCompanyByIdQuery, GetCompanyByIdQueryVariables>(GetCompanyByIdDocument, options);
+        }
+export function useGetCompanyByIdSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetCompanyByIdQuery, GetCompanyByIdQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetCompanyByIdQuery, GetCompanyByIdQueryVariables>(GetCompanyByIdDocument, options);
+        }
+export type GetCompanyByIdQueryHookResult = ReturnType<typeof useGetCompanyByIdQuery>;
+export type GetCompanyByIdLazyQueryHookResult = ReturnType<typeof useGetCompanyByIdLazyQuery>;
+export type GetCompanyByIdSuspenseQueryHookResult = ReturnType<typeof useGetCompanyByIdSuspenseQuery>;
+export type GetCompanyByIdQueryResult = Apollo.QueryResult<GetCompanyByIdQuery, GetCompanyByIdQueryVariables>;
 export const GetSongByIdDocument = gql`
-  query GetSongById($id: String!) {
-    getSongById(_id: $id) {
+    query GetSongById($id: String!) {
+  getSongById(_id: $id) {
+    _id
+    title
+    duration
+    album {
       _id
       title
-      duration
-      album {
+      releaseDate
+      genre
+      artist {
         _id
-        title
-        releaseDate
-        genre
-        artist {
-          _id
-          name
-        }
-        recordCompany {
-          _id
-          name
-        }
+        name
+      }
+      recordCompany {
+        _id
+        name
       }
     }
   }
-`;
+}
+    `;
 
 /**
  * __useGetSongByIdQuery__
@@ -2183,81 +1404,41 @@ export const GetSongByIdDocument = gql`
  *   },
  * });
  */
-export function useGetSongByIdQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    GetSongByIdQuery,
-    GetSongByIdQueryVariables
-  > &
-    (
-      | { variables: GetSongByIdQueryVariables; skip?: boolean }
-      | { skip: boolean }
-    )
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetSongByIdQuery, GetSongByIdQueryVariables>(
-    GetSongByIdDocument,
-    options
-  );
-}
-export function useGetSongByIdLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetSongByIdQuery,
-    GetSongByIdQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetSongByIdQuery, GetSongByIdQueryVariables>(
-    GetSongByIdDocument,
-    options
-  );
-}
-export function useGetSongByIdSuspenseQuery(
-  baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<
-        GetSongByIdQuery,
-        GetSongByIdQueryVariables
-      >
-) {
-  const options =
-    baseOptions === Apollo.skipToken
-      ? baseOptions
-      : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<GetSongByIdQuery, GetSongByIdQueryVariables>(
-    GetSongByIdDocument,
-    options
-  );
-}
+export function useGetSongByIdQuery(baseOptions: Apollo.QueryHookOptions<GetSongByIdQuery, GetSongByIdQueryVariables> & ({ variables: GetSongByIdQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetSongByIdQuery, GetSongByIdQueryVariables>(GetSongByIdDocument, options);
+      }
+export function useGetSongByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSongByIdQuery, GetSongByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetSongByIdQuery, GetSongByIdQueryVariables>(GetSongByIdDocument, options);
+        }
+export function useGetSongByIdSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetSongByIdQuery, GetSongByIdQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetSongByIdQuery, GetSongByIdQueryVariables>(GetSongByIdDocument, options);
+        }
 export type GetSongByIdQueryHookResult = ReturnType<typeof useGetSongByIdQuery>;
-export type GetSongByIdLazyQueryHookResult = ReturnType<
-  typeof useGetSongByIdLazyQuery
->;
-export type GetSongByIdSuspenseQueryHookResult = ReturnType<
-  typeof useGetSongByIdSuspenseQuery
->;
-export type GetSongByIdQueryResult = Apollo.QueryResult<
-  GetSongByIdQuery,
-  GetSongByIdQueryVariables
->;
+export type GetSongByIdLazyQueryHookResult = ReturnType<typeof useGetSongByIdLazyQuery>;
+export type GetSongByIdSuspenseQueryHookResult = ReturnType<typeof useGetSongByIdSuspenseQuery>;
+export type GetSongByIdQueryResult = Apollo.QueryResult<GetSongByIdQuery, GetSongByIdQueryVariables>;
 export const GetSongsByArtistIdDocument = gql`
-  query GetSongsByArtistId($artistId: String!) {
-    getSongsByArtistId(artistId: $artistId) {
+    query GetSongsByArtistId($artistId: String!) {
+  getSongsByArtistId(artistId: $artistId) {
+    _id
+    title
+    duration
+    album {
       _id
       title
-      duration
-      album {
+      genre
+      releaseDate
+      recordCompany {
         _id
-        title
-        genre
-        releaseDate
-        recordCompany {
-          _id
-          name
-        }
+        name
       }
     }
   }
-`;
+}
+    `;
 
 /**
  * __useGetSongsByArtistIdQuery__
@@ -2275,79 +1456,37 @@ export const GetSongsByArtistIdDocument = gql`
  *   },
  * });
  */
-export function useGetSongsByArtistIdQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    GetSongsByArtistIdQuery,
-    GetSongsByArtistIdQueryVariables
-  > &
-    (
-      | { variables: GetSongsByArtistIdQueryVariables; skip?: boolean }
-      | { skip: boolean }
-    )
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    GetSongsByArtistIdQuery,
-    GetSongsByArtistIdQueryVariables
-  >(GetSongsByArtistIdDocument, options);
-}
-export function useGetSongsByArtistIdLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetSongsByArtistIdQuery,
-    GetSongsByArtistIdQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    GetSongsByArtistIdQuery,
-    GetSongsByArtistIdQueryVariables
-  >(GetSongsByArtistIdDocument, options);
-}
-export function useGetSongsByArtistIdSuspenseQuery(
-  baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<
-        GetSongsByArtistIdQuery,
-        GetSongsByArtistIdQueryVariables
-      >
-) {
-  const options =
-    baseOptions === Apollo.skipToken
-      ? baseOptions
-      : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<
-    GetSongsByArtistIdQuery,
-    GetSongsByArtistIdQueryVariables
-  >(GetSongsByArtistIdDocument, options);
-}
-export type GetSongsByArtistIdQueryHookResult = ReturnType<
-  typeof useGetSongsByArtistIdQuery
->;
-export type GetSongsByArtistIdLazyQueryHookResult = ReturnType<
-  typeof useGetSongsByArtistIdLazyQuery
->;
-export type GetSongsByArtistIdSuspenseQueryHookResult = ReturnType<
-  typeof useGetSongsByArtistIdSuspenseQuery
->;
-export type GetSongsByArtistIdQueryResult = Apollo.QueryResult<
-  GetSongsByArtistIdQuery,
-  GetSongsByArtistIdQueryVariables
->;
-export const RecordCompaniesDocument = gql`
-  query RecordCompanies {
-    recordCompanies {
-      _id
-      name
-      foundedYear
-      country
-      albums {
-        _id
-        title
+export function useGetSongsByArtistIdQuery(baseOptions: Apollo.QueryHookOptions<GetSongsByArtistIdQuery, GetSongsByArtistIdQueryVariables> & ({ variables: GetSongsByArtistIdQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetSongsByArtistIdQuery, GetSongsByArtistIdQueryVariables>(GetSongsByArtistIdDocument, options);
       }
-      numOfAlbums
+export function useGetSongsByArtistIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSongsByArtistIdQuery, GetSongsByArtistIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetSongsByArtistIdQuery, GetSongsByArtistIdQueryVariables>(GetSongsByArtistIdDocument, options);
+        }
+export function useGetSongsByArtistIdSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetSongsByArtistIdQuery, GetSongsByArtistIdQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetSongsByArtistIdQuery, GetSongsByArtistIdQueryVariables>(GetSongsByArtistIdDocument, options);
+        }
+export type GetSongsByArtistIdQueryHookResult = ReturnType<typeof useGetSongsByArtistIdQuery>;
+export type GetSongsByArtistIdLazyQueryHookResult = ReturnType<typeof useGetSongsByArtistIdLazyQuery>;
+export type GetSongsByArtistIdSuspenseQueryHookResult = ReturnType<typeof useGetSongsByArtistIdSuspenseQuery>;
+export type GetSongsByArtistIdQueryResult = Apollo.QueryResult<GetSongsByArtistIdQuery, GetSongsByArtistIdQueryVariables>;
+export const RecordCompaniesDocument = gql`
+    query RecordCompanies {
+  recordCompanies {
+    _id
+    name
+    foundedYear
+    country
+    albums {
+      _id
+      title
     }
+    numOfAlbums
   }
-`;
+}
+    `;
 
 /**
  * __useRecordCompaniesQuery__
@@ -2364,75 +1503,37 @@ export const RecordCompaniesDocument = gql`
  *   },
  * });
  */
-export function useRecordCompaniesQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    RecordCompaniesQuery,
-    RecordCompaniesQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<RecordCompaniesQuery, RecordCompaniesQueryVariables>(
-    RecordCompaniesDocument,
-    options
-  );
-}
-export function useRecordCompaniesLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    RecordCompaniesQuery,
-    RecordCompaniesQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    RecordCompaniesQuery,
-    RecordCompaniesQueryVariables
-  >(RecordCompaniesDocument, options);
-}
-export function useRecordCompaniesSuspenseQuery(
-  baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<
-        RecordCompaniesQuery,
-        RecordCompaniesQueryVariables
-      >
-) {
-  const options =
-    baseOptions === Apollo.skipToken
-      ? baseOptions
-      : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<
-    RecordCompaniesQuery,
-    RecordCompaniesQueryVariables
-  >(RecordCompaniesDocument, options);
-}
-export type RecordCompaniesQueryHookResult = ReturnType<
-  typeof useRecordCompaniesQuery
->;
-export type RecordCompaniesLazyQueryHookResult = ReturnType<
-  typeof useRecordCompaniesLazyQuery
->;
-export type RecordCompaniesSuspenseQueryHookResult = ReturnType<
-  typeof useRecordCompaniesSuspenseQuery
->;
-export type RecordCompaniesQueryResult = Apollo.QueryResult<
-  RecordCompaniesQuery,
-  RecordCompaniesQueryVariables
->;
-export const SearchArtistByArtistNameDocument = gql`
-  query SearchArtistByArtistName($searchTerm: String!) {
-    searchArtistByArtistName(searchTerm: $searchTerm) {
-      _id
-      name
-      dateFormed
-      members
-      albums {
-        _id
-        title
+export function useRecordCompaniesQuery(baseOptions?: Apollo.QueryHookOptions<RecordCompaniesQuery, RecordCompaniesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<RecordCompaniesQuery, RecordCompaniesQueryVariables>(RecordCompaniesDocument, options);
       }
-      numOfAlbums
+export function useRecordCompaniesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RecordCompaniesQuery, RecordCompaniesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<RecordCompaniesQuery, RecordCompaniesQueryVariables>(RecordCompaniesDocument, options);
+        }
+export function useRecordCompaniesSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<RecordCompaniesQuery, RecordCompaniesQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<RecordCompaniesQuery, RecordCompaniesQueryVariables>(RecordCompaniesDocument, options);
+        }
+export type RecordCompaniesQueryHookResult = ReturnType<typeof useRecordCompaniesQuery>;
+export type RecordCompaniesLazyQueryHookResult = ReturnType<typeof useRecordCompaniesLazyQuery>;
+export type RecordCompaniesSuspenseQueryHookResult = ReturnType<typeof useRecordCompaniesSuspenseQuery>;
+export type RecordCompaniesQueryResult = Apollo.QueryResult<RecordCompaniesQuery, RecordCompaniesQueryVariables>;
+export const SearchArtistByArtistNameDocument = gql`
+    query SearchArtistByArtistName($searchTerm: String!) {
+  searchArtistByArtistName(searchTerm: $searchTerm) {
+    _id
+    name
+    dateFormed
+    members
+    albums {
+      _id
+      title
     }
+    numOfAlbums
   }
-`;
+}
+    `;
 
 /**
  * __useSearchArtistByArtistNameQuery__
@@ -2450,78 +1551,36 @@ export const SearchArtistByArtistNameDocument = gql`
  *   },
  * });
  */
-export function useSearchArtistByArtistNameQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    SearchArtistByArtistNameQuery,
-    SearchArtistByArtistNameQueryVariables
-  > &
-    (
-      | { variables: SearchArtistByArtistNameQueryVariables; skip?: boolean }
-      | { skip: boolean }
-    )
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    SearchArtistByArtistNameQuery,
-    SearchArtistByArtistNameQueryVariables
-  >(SearchArtistByArtistNameDocument, options);
-}
-export function useSearchArtistByArtistNameLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    SearchArtistByArtistNameQuery,
-    SearchArtistByArtistNameQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    SearchArtistByArtistNameQuery,
-    SearchArtistByArtistNameQueryVariables
-  >(SearchArtistByArtistNameDocument, options);
-}
-export function useSearchArtistByArtistNameSuspenseQuery(
-  baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<
-        SearchArtistByArtistNameQuery,
-        SearchArtistByArtistNameQueryVariables
-      >
-) {
-  const options =
-    baseOptions === Apollo.skipToken
-      ? baseOptions
-      : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<
-    SearchArtistByArtistNameQuery,
-    SearchArtistByArtistNameQueryVariables
-  >(SearchArtistByArtistNameDocument, options);
-}
-export type SearchArtistByArtistNameQueryHookResult = ReturnType<
-  typeof useSearchArtistByArtistNameQuery
->;
-export type SearchArtistByArtistNameLazyQueryHookResult = ReturnType<
-  typeof useSearchArtistByArtistNameLazyQuery
->;
-export type SearchArtistByArtistNameSuspenseQueryHookResult = ReturnType<
-  typeof useSearchArtistByArtistNameSuspenseQuery
->;
-export type SearchArtistByArtistNameQueryResult = Apollo.QueryResult<
-  SearchArtistByArtistNameQuery,
-  SearchArtistByArtistNameQueryVariables
->;
+export function useSearchArtistByArtistNameQuery(baseOptions: Apollo.QueryHookOptions<SearchArtistByArtistNameQuery, SearchArtistByArtistNameQueryVariables> & ({ variables: SearchArtistByArtistNameQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<SearchArtistByArtistNameQuery, SearchArtistByArtistNameQueryVariables>(SearchArtistByArtistNameDocument, options);
+      }
+export function useSearchArtistByArtistNameLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchArtistByArtistNameQuery, SearchArtistByArtistNameQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<SearchArtistByArtistNameQuery, SearchArtistByArtistNameQueryVariables>(SearchArtistByArtistNameDocument, options);
+        }
+export function useSearchArtistByArtistNameSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<SearchArtistByArtistNameQuery, SearchArtistByArtistNameQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<SearchArtistByArtistNameQuery, SearchArtistByArtistNameQueryVariables>(SearchArtistByArtistNameDocument, options);
+        }
+export type SearchArtistByArtistNameQueryHookResult = ReturnType<typeof useSearchArtistByArtistNameQuery>;
+export type SearchArtistByArtistNameLazyQueryHookResult = ReturnType<typeof useSearchArtistByArtistNameLazyQuery>;
+export type SearchArtistByArtistNameSuspenseQueryHookResult = ReturnType<typeof useSearchArtistByArtistNameSuspenseQuery>;
+export type SearchArtistByArtistNameQueryResult = Apollo.QueryResult<SearchArtistByArtistNameQuery, SearchArtistByArtistNameQueryVariables>;
 export const SearchSongByTitleDocument = gql`
-  query SearchSongByTitle($searchTitleTerm: String!) {
-    searchSongByTitle(searchTitleTerm: $searchTitleTerm) {
+    query SearchSongByTitle($searchTitleTerm: String!) {
+  searchSongByTitle(searchTitleTerm: $searchTitleTerm) {
+    _id
+    title
+    duration
+    album {
       _id
       title
-      duration
-      album {
-        _id
-        title
-        releaseDate
-      }
+      releaseDate
     }
   }
-`;
+}
+    `;
 
 /**
  * __useSearchSongByTitleQuery__
@@ -2539,61 +1598,19 @@ export const SearchSongByTitleDocument = gql`
  *   },
  * });
  */
-export function useSearchSongByTitleQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    SearchSongByTitleQuery,
-    SearchSongByTitleQueryVariables
-  > &
-    (
-      | { variables: SearchSongByTitleQueryVariables; skip?: boolean }
-      | { skip: boolean }
-    )
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    SearchSongByTitleQuery,
-    SearchSongByTitleQueryVariables
-  >(SearchSongByTitleDocument, options);
-}
-export function useSearchSongByTitleLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    SearchSongByTitleQuery,
-    SearchSongByTitleQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    SearchSongByTitleQuery,
-    SearchSongByTitleQueryVariables
-  >(SearchSongByTitleDocument, options);
-}
-export function useSearchSongByTitleSuspenseQuery(
-  baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<
-        SearchSongByTitleQuery,
-        SearchSongByTitleQueryVariables
-      >
-) {
-  const options =
-    baseOptions === Apollo.skipToken
-      ? baseOptions
-      : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<
-    SearchSongByTitleQuery,
-    SearchSongByTitleQueryVariables
-  >(SearchSongByTitleDocument, options);
-}
-export type SearchSongByTitleQueryHookResult = ReturnType<
-  typeof useSearchSongByTitleQuery
->;
-export type SearchSongByTitleLazyQueryHookResult = ReturnType<
-  typeof useSearchSongByTitleLazyQuery
->;
-export type SearchSongByTitleSuspenseQueryHookResult = ReturnType<
-  typeof useSearchSongByTitleSuspenseQuery
->;
-export type SearchSongByTitleQueryResult = Apollo.QueryResult<
-  SearchSongByTitleQuery,
-  SearchSongByTitleQueryVariables
->;
+export function useSearchSongByTitleQuery(baseOptions: Apollo.QueryHookOptions<SearchSongByTitleQuery, SearchSongByTitleQueryVariables> & ({ variables: SearchSongByTitleQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<SearchSongByTitleQuery, SearchSongByTitleQueryVariables>(SearchSongByTitleDocument, options);
+      }
+export function useSearchSongByTitleLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchSongByTitleQuery, SearchSongByTitleQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<SearchSongByTitleQuery, SearchSongByTitleQueryVariables>(SearchSongByTitleDocument, options);
+        }
+export function useSearchSongByTitleSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<SearchSongByTitleQuery, SearchSongByTitleQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<SearchSongByTitleQuery, SearchSongByTitleQueryVariables>(SearchSongByTitleDocument, options);
+        }
+export type SearchSongByTitleQueryHookResult = ReturnType<typeof useSearchSongByTitleQuery>;
+export type SearchSongByTitleLazyQueryHookResult = ReturnType<typeof useSearchSongByTitleLazyQuery>;
+export type SearchSongByTitleSuspenseQueryHookResult = ReturnType<typeof useSearchSongByTitleSuspenseQuery>;
+export type SearchSongByTitleQueryResult = Apollo.QueryResult<SearchSongByTitleQuery, SearchSongByTitleQueryVariables>;

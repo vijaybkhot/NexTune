@@ -85,13 +85,21 @@ function EditArtistModal({
       JSON.stringify(memberList) !== JSON.stringify(originalMembers);
 
     if (editedMembers) {
-      const nameRegex = /^[A-Za-z\s]+$/;
-      const invalidMembers = memberList.filter((m) => !nameRegex.test(m));
+      const nameRegex = /^[A-Za-z\s.'-]+$/;
+
+      const trimmedMembers = memberList.map((m) => m.trim());
+      const invalidMembers = trimmedMembers.filter(
+        (m) => m === "" || !nameRegex.test(m)
+      );
+
       if (invalidMembers.length > 0) {
-        alert("Member names must contain only letters and spaces.");
+        alert(
+          "Each member name must be non-empty and contain only letters, spaces, periods (.), apostrophes ('), or hyphens (-)."
+        );
         return;
       }
-      variables.members = memberList;
+
+      variables.members = trimmedMembers;
     }
 
     // Date validation
