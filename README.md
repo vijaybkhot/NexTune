@@ -66,7 +66,7 @@ Full instructions in the [Getting Started](#getting-started) section of this REA
 
 ##### 1. Clone the Repository
 
-git clone https://github.com/yourusername/nextune.git
+git clone https://github.com/vijaybkhot/nextune.git
 cd nextune
 
 
