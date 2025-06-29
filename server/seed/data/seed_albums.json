@@ -1,0 +1,164 @@
+[
+  {
+    "title": "Parachutes",
+    "releaseDate": "07/10/2000",
+    "genre": "ALTERNATIVE",
+    "artistName": "Coldplay",
+    "companyName": "Parlophone"
+  },
+  {
+    "title": "A Rush of Blood to the Head",
+    "releaseDate": "08/26/2002",
+    "genre": "ROCK",
+    "artistName": "Coldplay",
+    "companyName": "Parlophone"
+  },
+  {
+    "title": "Night Visions",
+    "releaseDate": "09/04/2012",
+    "genre": "POP",
+    "artistName": "Imagine Dragons",
+    "companyName": "Interscope Records"
+  },
+  {
+    "title": "Evolve",
+    "releaseDate": "06/23/2017",
+    "genre": "ELECTRONIC",
+    "artistName": "Imagine Dragons",
+    "companyName": "Interscope Records"
+  },
+  {
+    "title": "Songs About Jane",
+    "releaseDate": "06/25/2002",
+    "genre": "POP",
+    "artistName": "Maroon 5",
+    "companyName": "Octone Records"
+  },
+  {
+    "title": "It Won't Be Soon Before Long",
+    "releaseDate": "05/16/2007",
+    "genre": "POP",
+    "artistName": "Maroon 5",
+    "companyName": "A&M Octone Records"
+  },
+  {
+    "title": "Hybrid Theory",
+    "releaseDate": "10/24/2000",
+    "genre": "ROCK",
+    "artistName": "Linkin Park",
+    "companyName": "Warner Music Group"
+  },
+  {
+    "title": "Meteora",
+    "releaseDate": "03/25/2003",
+    "genre": "ROCK",
+    "artistName": "Linkin Park",
+    "companyName": "Warner Music Group"
+  },
+  {
+    "title": "Dreaming Out Loud",
+    "releaseDate": "11/20/2007",
+    "genre": "POP",
+    "artistName": "OneRepublic",
+    "companyName": "Interscope Records"
+  },
+  {
+    "title": "Waking Up",
+    "releaseDate": "11/17/2009",
+    "genre": "POP",
+    "artistName": "OneRepublic",
+    "companyName": "Interscope Records"
+  },
+  {
+    "title": "Abbey Road",
+    "releaseDate": "09/26/1969",
+    "genre": "ROCK",
+    "artistName": "The Beatles",
+    "companyName": "Apple Records"
+  },
+  {
+    "title": "Let It Be",
+    "releaseDate": "05/08/1970",
+    "genre": "ROCK",
+    "artistName": "The Beatles",
+    "companyName": "Apple Records"
+  },
+  {
+    "title": "Sticky Fingers",
+    "releaseDate": "04/23/1971",
+    "genre": "ROCK",
+    "artistName": "The Rolling Stones",
+    "companyName": "Rolling Stones Records"
+  },
+  {
+    "title": "Let It Bleed",
+    "releaseDate": "12/05/1969",
+    "genre": "ROCK",
+    "artistName": "The Rolling Stones",
+    "companyName": "Decca Records"
+  },
+  {
+    "title": "A Night at the Opera",
+    "releaseDate": "11/21/1975",
+    "genre": "ROCK",
+    "artistName": "Queen",
+    "companyName": "EMI Group"
+  },
+  {
+    "title": "News of the World",
+    "releaseDate": "10/28/1977",
+    "genre": "ROCK",
+    "artistName": "Queen",
+    "companyName": "EMI Group"
+  },
+  {
+    "title": "The Joshua Tree",
+    "releaseDate": "03/09/1987",
+    "genre": "ROCK",
+    "artistName": "U2",
+    "companyName": "Island Records"
+  },
+  {
+    "title": "Achtung Baby",
+    "releaseDate": "11/18/1991",
+    "genre": "ROCK",
+    "artistName": "U2",
+    "companyName": "Island Records"
+  },
+
+  {
+    "title": "Brand New Eyes",
+    "releaseDate": "09/29/2009",
+    "genre": "ROCK",
+    "artistName": "Paramore",
+    "companyName": "Fueled by Ramen"
+  },
+  {
+    "title": "Paramore",
+    "releaseDate": "04/05/2013",
+    "genre": "ALTERNATIVE",
+    "artistName": "Paramore",
+    "companyName": "Fueled by Ramen"
+  },
+  {
+    "title": "AM",
+    "releaseDate": "09/09/2013",
+    "genre": "ROCK",
+    "artistName": "Arctic Monkeys",
+    "companyName": "Domino Recording Company"
+  },
+  {
+    "title": "Wasting Light",
+    "releaseDate": "04/12/2011",
+    "genre": "ROCK",
+    "artistName": "Foo Fighters",
+    "companyName": "RCA Records"
+  },
+  {
+    "title": "Hot Fuss",
+    "releaseDate": "06/07/2004",
+    "genre": "ROCK",
+    "artistName": "The Killers",
+    "companyName": "Island Records"
+  }
+]

@@ -56,10 +56,16 @@ function EditCompanyModal({
 
     // Name validation
     const trimmedName = name.trim();
+    const nameRegex = /^[A-Za-z0-9\s&.'-]+$/;
+
     if (trimmedName && trimmedName !== company.name.trim()) {
-      if (trimmedName === "" || !/^[A-Za-z]+$/.test(trimmedName)) {
+      if (
+        trimmedName.length === 0 ||
+        trimmedName.length > 100 ||
+        !nameRegex.test(trimmedName)
+      ) {
         alert(
-          "Name should be a string containing only alphabets. No numbers or special characters."
+          "Name should be 1–100 characters and may include letters, numbers, spaces, &, ., ', and -"
         );
         return;
       }
@@ -70,11 +76,11 @@ function EditCompanyModal({
     if (foundedYear) {
       if (
         !Number.isInteger(foundedYear) ||
-        foundedYear < 1900 ||
+        foundedYear < 1850 ||
         foundedYear > 2025
       ) {
         alert(
-          "Company founded year should be an integer between 1900 and 2025."
+          "Company founded year should be an integer between 1850 and 2025."
         );
         return;
       }
@@ -88,8 +94,8 @@ function EditCompanyModal({
       const trimmedCountry = country.trim();
       if (trimmedCountry === "") {
         alert("Country cannot be empty or blank spaces.");
+        return;
       }
-
       if (company.country !== trimmedCountry) {
         variables.country = trimmedCountry;
       }

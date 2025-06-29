@@ -1,0 +1,118 @@
+[
+  {
+    "name": "Coldplay",
+    "date_formed": "01/01/1996",
+    "members": [
+      "Chris Martin",
+      "Jonny Buckland",
+      "Guy Berryman",
+      "Will Champion"
+    ]
+  },
+  {
+    "name": "Imagine Dragons",
+    "date_formed": "01/01/2008",
+    "members": ["Dan Reynolds", "Wayne Sermon", "Ben McKee", "Daniel Platzman"]
+  },
+  {
+    "name": "Maroon 5",
+    "date_formed": "01/01/2001",
+    "members": [
+      "Adam Levine",
+      "Jesse Carmichael",
+      "James Valentine",
+      "Matt Flynn",
+      "PJ Morton",
+      "Sam Farrar"
+    ]
+  },
+  {
+    "name": "Linkin Park",
+    "date_formed": "01/01/1996",
+    "members": [
+      "Chester Bennington",
+      "Mike Shinoda",
+      "Brad Delson",
+      "Dave Farrell",
+      "Joe Hahn",
+      "Rob Bourdon"
+    ]
+  },
+  {
+    "name": "OneRepublic",
+    "date_formed": "01/01/2002",
+    "members": [
+      "Ryan Tedder",
+      "Zach Filkins",
+      "Drew Brown",
+      "Brent Kutzle",
+      "Eddie Fisher"
+    ]
+  },
+  {
+    "name": "The Beatles",
+    "date_formed": "01/01/1960",
+    "members": [
+      "John Lennon",
+      "Paul McCartney",
+      "George Harrison",
+      "Ringo Starr"
+    ]
+  },
+  {
+    "name": "The Rolling Stones",
+    "date_formed": "01/01/1962",
+    "members": ["Mick Jagger", "Keith Richards", "Ronnie Wood", "Charlie Watts"]
+  },
+  {
+    "name": "Queen",
+    "date_formed": "01/01/1970",
+    "members": ["Freddie Mercury", "Brian May", "Roger Taylor", "John Deacon"]
+  },
+  {
+    "name": "U2",
+    "date_formed": "01/01/1976",
+    "members": ["Bono", "The Edge", "Adam Clayton", "Larry Mullen Jr."]
+  },
+  {
+    "name": "Green Day",
+    "date_formed": "01/01/1987",
+    "members": ["Billie Joe Armstrong", "Mike Dirnt", "Tre Cool"]
+  },
+  {
+    "name": "Paramore",
+    "date_formed": "01/01/2004",
+    "members": ["Hayley Williams", "Taylor York", "Zac Farro"]
+  },
+  {
+    "name": "Arctic Monkeys",
+    "date_formed": "01/01/2002",
+    "members": ["Alex Turner", "Jamie Cook", "Nick O'Malley", "Matt Helders"]
+  },
+  {
+    "name": "Foo Fighters",
+    "date_formed": "01/01/1994",
+    "members": [
+      "Dave Grohl",
+      "Pat Smear",
+      "Nate Mendel",
+      "Chris Shiflett",
+      "Rami Jaffee"
+    ]
+  },
+  {
+    "name": "The Killers",
+    "date_formed": "01/01/2001",
+    "members": [
+      "Brandon Flowers",
+      "Dave Keuning",
+      "Mark Stoermer",
+      "Ronnie Vannucci Jr."
+    ]
+  },
+  {
+    "name": "Red Hot Chili Peppers",
+    "date_formed": "01/01/1983",
+    "members": ["Anthony Kiedis", "Flea", "Chad Smith", "John Frusciante"]
+  }
+]

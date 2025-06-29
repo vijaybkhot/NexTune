@@ -8,24 +8,12 @@ export default function HomePage() {
       <header className="mb-10 sm:mb-16 text-center">
         <h1 className="text-4xl sm:text-5xl font-extrabold mb-3">NexTune</h1>
         <p className="text-gray-600 text-base sm:text-lg max-w-xl mx-auto">
-          Manage Songs, Albums, Artists & Record Companies
+          Discover and manage songs, albums, artists, and record companies — all
+          in one place.
         </p>
       </header>
 
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {/* Songs Card */}
-        <Link
-          href="/songs"
-          className="group block p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out"
-        >
-          <h2 className="text-2xl font-semibold mb-2 group-hover:text-blue-600 transition-colors duration-300">
-            Songs
-          </h2>
-          <p className="text-gray-600 text-sm sm:text-base">
-            View and manage all songs.
-          </p>
-        </Link>
-
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {/* Albums Card */}
         <Link
           href="/albums"
@@ -35,7 +23,7 @@ export default function HomePage() {
             Albums
           </h2>
           <p className="text-gray-600 text-sm sm:text-base">
-            View and manage albums collection.
+            View and manage your music album collection.
           </p>
         </Link>
 
@@ -48,7 +36,7 @@ export default function HomePage() {
             Artists
           </h2>
           <p className="text-gray-600 text-sm sm:text-base">
-            Browse and edit artists information.
+            Browse, add, and update artist profiles and metadata.
           </p>
         </Link>
 
@@ -61,15 +49,12 @@ export default function HomePage() {
             Record Companies
           </h2>
           <p className="text-gray-600 text-sm sm:text-base">
-            Manage record companies data.
+            Manage information about record labels and companies.
           </p>
         </Link>
       </section>
 
-      {/* Future feature placeholder */}
-      <section className="mt-16 p-6 bg-blue-50 rounded-lg text-center text-blue-700 font-semibold max-w-2xl mx-auto">
-        <p>🎵 Coming Soon: Play songs directly from your collection!</p>
-      </section>
+      {/* Placeholder removed since no song playing feature for now */}
     </main>
   );
 }

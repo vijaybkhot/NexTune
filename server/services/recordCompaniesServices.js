@@ -17,7 +17,7 @@ import {
   albums as albumCollection,
   artists as artistsCollection,
   songs as songsCollection,
-} from "../Config/mongoCollections.js";
+} from "../config/mongoCollections.js";
 
 export const getAllRecordCompanies = async (_, args, context) => {
   const { redisClient } = context;
@@ -55,9 +55,9 @@ export const filterCompaniesByFoundedYear = async (_, args, context) => {
   const { redisClient } = context;
   try {
     let { min, max } = args;
-    if (min < 1900 || max > 2025 || max < min) {
+    if (min < 1850 || max > 2025 || max < min) {
       throw invalidInputError(
-        "Invalid input: min and max should be numbers, min >= 1900, max <= 2025, and max >= min."
+        "Invalid input: min and max should be numbers, min >= 1850, max <= 2025, and max >= min."
       );
     }
     // Check if document is cached
@@ -137,10 +137,16 @@ export const createNewCompany = async (_, args, context) => {
     country = country.trim();
 
     // Validate name
-    if (name === "" || !/^[A-Za-z]+$/.test(name))
+    if (
+      !name ||
+      name.trim() === "" ||
+      name.length > 100 || // Optional: max length
+      !/^[A-Za-z0-9\s&.'\-]+$/.test(name.trim())
+    ) {
       throw invalidInputError(
-        "Name should be a string containing only alphabets. No numbers or special characters."
+        "Name should be 1–100 characters and may include letters, numbers, spaces, &, ., ', and -"
       );
+    }
 
     // Validate country
     if (country === "")
@@ -149,9 +155,9 @@ export const createNewCompany = async (_, args, context) => {
     country = normalizeCountryName(country);
 
     // Validate founded year
-    if (!foundedYear || foundedYear < 1900 || foundedYear > 2025)
+    if (!foundedYear || foundedYear < 1850 || foundedYear > 2025)
       throw invalidInputError(
-        "Company founded year should be between 1900 and 2025"
+        "Company founded year should be between 1850 and 2025"
       );
 
     const newCompany = {
@@ -224,11 +230,16 @@ export const updateCompany = async (_, args, context) => {
     // Validate and update name
     if (name) {
       name = name.trim();
-      if (name === "" || !/^[A-Za-z]+$/.test(name)) {
+      if (
+        name === "" ||
+        name.length > 100 ||
+        !/^[A-Za-z0-9\s&.'\-]+$/.test(name)
+      ) {
         throw invalidInputError(
-          "Name should be a string containing only alphabets and spaces, and cannot be empty."
+          "Name should be 1–100 characters and may include letters, numbers, spaces, &, ., ', and -"
         );
       }
+
       if (name !== existingCompany.name) {
         updateObject.name = name;
       }
@@ -238,11 +249,11 @@ export const updateCompany = async (_, args, context) => {
     if (foundedYear) {
       if (
         !Number.isInteger(foundedYear) ||
-        foundedYear < 1900 ||
+        foundedYear < 1850 ||
         foundedYear > 2025
       ) {
         throw invalidInputError(
-          "Company founded year should be an integer between 1900 and 2025."
+          "Company founded year should be an integer between 1850 and 2025."
         );
       }
       if (foundedYear !== existingCompany.foundedYear) {

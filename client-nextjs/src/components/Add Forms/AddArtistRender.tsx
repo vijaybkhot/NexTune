@@ -71,10 +71,16 @@ export function AddArtistRender({ closeAddFormState }: AddArtistRenderProps) {
     }
 
     // Validate members
-    const nameRegex = /^[A-Za-z\s]+$/;
-    const invalidMembers = memberList.filter((m) => !nameRegex.test(m));
+    const nameRegex = /^[A-Za-z\s.'-]+$/;
+
+    const invalidMembers = memberList
+      .map((m) => m.trim())
+      .filter((m) => m === "" || !nameRegex.test(m));
+
     if (invalidMembers.length > 0) {
-      alert("Member names must only contain letters and spaces (A-Z, a-z).");
+      alert(
+        "Member names must only contain letters, spaces, periods (.), apostrophes ('), and hyphens (-)."
+      );
       return;
     }
 

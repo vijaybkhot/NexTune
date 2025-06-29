@@ -7,7 +7,7 @@ import {
   albums as albumCollection,
   recordcompanies as recordcompaniesCollection,
   songs as songsCollection,
-} from "./Config/mongoCollections.js";
+} from "./config/mongoCollections.js";
 
 import {
   addAlbum,

@@ -54,27 +54,34 @@ function AddCompanyRender({ closeAddFormState }: AddCompanyRenderProps) {
   ): Promise<void> => {
     e.preventDefault();
 
-    // Trim name and members
+    // Trim name and country
     const trimmedCompanyName = companyName.trim();
+    const trimmedCountry = country.trim();
 
     // Validate name
-    if (!trimmedCompanyName) {
-      alert("Record company name cannot be empty or just spaces.");
+    const nameRegex = /^[A-Za-z0-9\s&.'-]+$/;
+    if (
+      !trimmedCompanyName ||
+      trimmedCompanyName.length > 100 ||
+      !nameRegex.test(trimmedCompanyName)
+    ) {
+      alert(
+        "Company name must be 1–100 characters and may include letters, numbers, spaces, &, ., ', and -"
+      );
       return;
     }
 
     // Validate founded year
     const year = Number(foundedYear);
-
-    if (!Number.isInteger(year) || year < 1900 || year > 2025) {
-      alert("Company founded year should be an integer between 1900 and 2025.");
+    if (!Number.isInteger(year) || year < 1850 || year > 2025) {
+      alert("Company founded year should be an integer between 1850 and 2025.");
       return;
     }
 
     // Validate country
-    const trimmedCountry = country.trim();
     if (trimmedCountry === "") {
       alert("Country cannot be empty or blank spaces.");
+      return;
     }
 
     try {

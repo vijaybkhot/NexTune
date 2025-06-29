@@ -170,6 +170,21 @@ function EditAlbumModal({ isOpen, album, handleClose }: EditAlbumModalProps) {
       "R_AND_B",
       "INDIE",
       "ALTERNATIVE",
+      "PUNK",
+      "METAL",
+      "BLUES",
+      "FOLK",
+      "REGGAE",
+      "LATIN",
+      "SOUL",
+      "FUNK",
+      "DISCO",
+      "WORLD",
+      "OPERA",
+      "SOUNDTRACK",
+      "K_POP",
+      "EDM",
+      "OTHER",
     ];
 
     if (genre && genre !== album.genre) {
@@ -287,9 +302,24 @@ function EditAlbumModal({ isOpen, album, handleClose }: EditAlbumModalProps) {
               <option value="JAZZ">Jazz</option>
               <option value="CLASSICAL">Classical</option>
               <option value="ELECTRONIC">Electronic</option>
-              <option value="R_AND_B">R&B</option>
+              <option value="R_AND_B">R&amp;B</option>
               <option value="INDIE">Indie</option>
               <option value="ALTERNATIVE">Alternative</option>
+              <option value="PUNK">Punk</option>
+              <option value="METAL">Metal</option>
+              <option value="BLUES">Blues</option>
+              <option value="FOLK">Folk</option>
+              <option value="REGGAE">Reggae</option>
+              <option value="LATIN">Latin</option>
+              <option value="SOUL">Soul</option>
+              <option value="FUNK">Funk</option>
+              <option value="DISCO">Disco</option>
+              <option value="WORLD">World</option>
+              <option value="OPERA">Opera</option>
+              <option value="SOUNDTRACK">Soundtrack</option>
+              <option value="K_POP">K-Pop</option>
+              <option value="EDM">EDM</option>
+              <option value="OTHER">Other</option>
             </select>
           </div>
 

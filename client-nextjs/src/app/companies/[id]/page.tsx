@@ -46,7 +46,7 @@ export default async function RecordCompanyPage({
   }
 
   return (
-    <PageContainer title="Artist Details">
+    <PageContainer title="Record Company Details">
       <RecordCompanyClientSection companyId={company._id} />
     </PageContainer>
   );

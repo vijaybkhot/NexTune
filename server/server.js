@@ -9,7 +9,7 @@ import { resolvers } from "./resolvers.js";
 import {
   connectToRedis,
   client as redisClient,
-} from "./Config/redisClientConnection.js";
+} from "./config/redisClientConnection.js";
 import { dbConnection } from "./Config/mongoConnection.js";
 
 dotenv.config();
@@ -62,7 +62,12 @@ const apolloServer = new ApolloServer({
 
     app.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);
-      console.log(`📡 GraphQL endpoint: /graphql`);
+      console.log(
+        `📡 GraphQL endpoint: ${
+          process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ||
+          "http://localhost:4000/graphql"
+        }`
+      );
     });
   } catch (err) {
     console.error("❌ Server startup error:", err);

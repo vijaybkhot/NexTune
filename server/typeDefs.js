@@ -78,6 +78,21 @@ enum MusicGenre {
   R_AND_B
   INDIE
   ALTERNATIVE
+  PUNK
+  METAL
+  BLUES
+  FOLK
+  REGGAE
+  LATIN
+  SOUL
+  FUNK
+  DISCO
+  WORLD
+  OPERA
+  SOUNDTRACK
+  K_POP
+  EDM
+  OTHER
 }
 
 `;
