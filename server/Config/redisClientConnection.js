@@ -2,17 +2,23 @@ import { createClient } from "redis";
 import dotenv from "dotenv";
 dotenv.config();
 
+// Optional: Validate required env variables
+const { REDIS_USER, REDIS_PASSWORD, REDIS_HOST, REDIS_PORT } = process.env;
+if (!REDIS_USER || !REDIS_PASSWORD || !REDIS_HOST || !REDIS_PORT) {
+  console.error("❌ Missing Redis environment variables");
+}
+
 const client = createClient({
-  username: process.env.REDIS_USER,
-  password: process.env.REDIS_PASSWORD,
+  username: REDIS_USER,
+  password: REDIS_PASSWORD,
   socket: {
-    host: process.env.REDIS_HOST,
-    port: Number(process.env.REDIS_PORT),
+    host: REDIS_HOST,
+    port: Number(REDIS_PORT),
   },
 });
 
 client.on("error", (err) =>
-  console.log("❌ Redis Client Error in redisClientConnection:", err)
+  console.error("❌ Redis Client Error in redisClientConnection:", err)
 );
 
 const connectToRedis = async () => {
