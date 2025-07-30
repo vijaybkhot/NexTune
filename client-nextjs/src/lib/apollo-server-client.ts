@@ -5,11 +5,15 @@ console.log(
   "Creating Apollo Client with SSR mode",
   process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT
 );
+
+const endpoint =
+  process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT || "http://localhost:4000/graphql";
+
 export function getClient() {
   return new ApolloClient({
-    ssrMode: true,
+    ssrMode: typeof window === "undefined",
     link: new HttpLink({
-      uri: "http://server:4000/graphql",
+      uri: endpoint,
       fetch,
     }),
     cache: new InMemoryCache(),

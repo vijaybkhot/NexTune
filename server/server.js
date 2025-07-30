@@ -45,6 +45,8 @@ const apolloServer = new ApolloServer({
       "/graphql",
       cors({
         origin: (origin, callback) => {
+          console.log("Incoming request origin:", origin);
+          console.log("Allowed origins:", allowedOrigins);
           // Allow requests with no origin (like mobile apps or curl)
           if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
@@ -62,12 +64,7 @@ const apolloServer = new ApolloServer({
 
     app.listen(PORT, "0.0.0.0", () => {
       console.log(`🚀 Server running on port ${PORT}`);
-      console.log(
-        `📡 GraphQL endpoint: ${
-          process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ||
-          "http://localhost:4000/graphql"
-        }`
-      );
+      console.log(`📡 GraphQL endpoint: ${"http://localhost:4000/graphql"}`);
     });
   } catch (err) {
     console.error("❌ Server startup error:", err);
