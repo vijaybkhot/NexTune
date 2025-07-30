@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  server:
+    build: ./server
+    container_name: nextune-backend
+    ports:
+      - "4000:4000"
+    env_file:
+      - ./server/.env
+    restart: unless-stopped
+
+  client:
+    build: ./client-nextjs
+    container_name: nextune-frontend-nextjs
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./client-nextjs/.env.docker
+    depends_on:
+      - server
+    restart: unless-stopped
