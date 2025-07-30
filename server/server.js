@@ -10,7 +10,7 @@ import {
   connectToRedis,
   client as redisClient,
 } from "./config/redisClientConnection.js";
-import { dbConnection } from "./Config/mongoConnection.js";
+import { dbConnection } from "./config/mongoConnection.js";
 
 dotenv.config();
 
