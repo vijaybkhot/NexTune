@@ -1,25 +1,21 @@
 import { getClient } from "@/lib/apollo-server-client";
-import {
-  Album,
-  AlbumsDocument,
-  GetAlbumByIdDocument,
-} from "@/__generated__/types";
+import { GetAlbumByIdDocument } from "@/__generated__/types";
 import AlbumClientSection from "@/components/ClientSections/Single Entity/AlbumClientSection";
 
-export const revalidate = 60;
+// export const revalidate = 60;
 
-export async function generateStaticParams() {
-  const client = getClient();
-  const { data } = await client.query({
-    query: AlbumsDocument,
-  });
+// export async function generateStaticParams() {
+//   const client = getClient();
+//   const { data } = await client.query({
+//     query: AlbumsDocument,
+//   });
 
-  return (
-    data.albums?.map((album: Album) => ({
-      id: album?._id,
-    })) ?? []
-  );
-}
+//   return (
+//     data.albums?.map((album: Album) => ({
+//       id: album?._id,
+//     })) ?? []
+//   );
+// }
 
 type PageProps = {
   params: Promise<{

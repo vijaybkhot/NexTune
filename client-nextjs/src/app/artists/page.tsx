@@ -3,7 +3,7 @@ import ArtistsClientSection from "@/components/ClientSections/Entity Lists/Artis
 import PageContainer from "@/components/PageContainer";
 import { getClient } from "@/lib/apollo-server-client";
 
-export const revalidate = 60;
+// export const revalidate = 60;
 
 export default async function ArtistsPage() {
   const client = getClient();

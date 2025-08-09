@@ -1,26 +1,22 @@
 import { getClient } from "@/lib/apollo-server-client";
-import {
-  GetCompanyByIdDocument,
-  RecordCompaniesDocument,
-  RecordCompany,
-} from "@/__generated__/types";
+import { GetCompanyByIdDocument } from "@/__generated__/types";
 import RecordCompanyClientSection from "@/components/ClientSections/Single Entity/RecordCompanyClientSection";
 import PageContainer from "@/components/PageContainer";
 
-export const revalidate = 60;
+// export const revalidate = 60;
 
-export async function generateStaticParams() {
-  const client = getClient();
-  const { data } = await client.query({
-    query: RecordCompaniesDocument,
-  });
+// export async function generateStaticParams() {
+//   const client = getClient();
+//   const { data } = await client.query({
+//     query: RecordCompaniesDocument,
+//   });
 
-  return (
-    data.recordcompanies?.map((company: RecordCompany) => ({
-      id: company._id,
-    })) ?? []
-  );
-}
+//   return (
+//     data.recordcompanies?.map((company: RecordCompany) => ({
+//       id: company._id,
+//     })) ?? []
+//   );
+// }
 
 type RecordCompanyPageProps = {
   params: Promise<{

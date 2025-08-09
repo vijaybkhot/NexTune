@@ -3,7 +3,7 @@ import RecordCompaniesClientSection from "@/components/ClientSections/Entity Lis
 import PageContainer from "@/components/PageContainer";
 import { getClient } from "@/lib/apollo-server-client";
 
-export const revalidate = 60;
+// export const revalidate = 60;
 
 export default async function CompaniesPage() {
   const client = getClient();

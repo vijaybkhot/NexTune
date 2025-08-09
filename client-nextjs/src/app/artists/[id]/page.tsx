@@ -1,27 +1,25 @@
 import { getClient } from "@/lib/apollo-server-client";
 import {
-  Artist,
-  ArtistsDocument,
   GetArtistByIdDocument,
   GetSongsByArtistIdDocument,
 } from "@/__generated__/types";
 import ArtistClientSection from "@/components/ClientSections/Single Entity/ArtistClientSection";
 import PageContainer from "@/components/PageContainer";
 
-export const revalidate = 60;
+// export const revalidate = 60;
 
-export async function generateStaticParams() {
-  const client = getClient();
-  const { data } = await client.query({
-    query: ArtistsDocument,
-  });
+// export async function generateStaticParams() {
+//   const client = getClient();
+//   const { data } = await client.query({
+//     query: ArtistsDocument,
+//   });
 
-  return (
-    data.artists?.map((artist: Artist) => ({
-      id: artist?._id,
-    })) ?? []
-  );
-}
+//   return (
+//     data.artists?.map((artist: Artist) => ({
+//       id: artist?._id,
+//     })) ?? []
+//   );
+// }
 
 type PageProps = {
   params: Promise<{
