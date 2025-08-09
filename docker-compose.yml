@@ -17,6 +17,8 @@ services:
       - "3000:3000"
     env_file:
       - ./client-nextjs/.env.docker
+    environment:
+      - NODE_ENV=production
     depends_on:
       - server
     restart: unless-stopped
