@@ -1,8 +1,15 @@
 import type { CodegenConfig } from "@graphql-codegen/cli";
+import dotenv from "dotenv";
+dotenv.config();
+
+const endpoint = process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT;
+if (!endpoint) {
+  throw new Error("NEXT_PUBLIC_GRAPHQL_ENDPOINT is not set in codegen.ts");
+}
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: "http://localhost:4000/graphql",
+  schema: endpoint,
   documents: [
     // "src/app/**/*.tsx",
     // "src/components/**/*.tsx",
