@@ -64,7 +64,7 @@ const apolloServer = new ApolloServer({
 
     app.listen(PORT, "0.0.0.0", () => {
       console.log(`🚀 Server running on port ${PORT}`);
-      console.log(`📡 GraphQL endpoint: ${"http://localhost:4000/graphql"}`);
+      console.log(`📡 GraphQL endpoint: ${process.env.BASE_URL}`);
     });
   } catch (err) {
     console.error("❌ Server startup error:", err);

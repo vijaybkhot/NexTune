@@ -2,7 +2,9 @@ version: "3.8"
 
 services:
   server:
-    build: ./server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
     container_name: nextune-backend
     ports:
       - "4000:4000"
@@ -11,14 +13,15 @@ services:
     restart: unless-stopped
 
   client:
-    build: ./client-nextjs
+    build:
+      context: ./client-nextjs
+      dockerfile: Dockerfile
     container_name: nextune-frontend-nextjs
     ports:
       - "3000:3000"
     env_file:
-      - ./client-nextjs/.env.docker
-    environment:
-      - NODE_ENV=production
+      - ./client-nextjs/.env.production
     depends_on:
       - server
     restart: unless-stopped
+
