@@ -4,6 +4,12 @@
 
 ---
 
+## Live Demo
+Check out the live application here: [NexTune Live](https://nex-tune.vercel.app/)
+
+---
+
+
 ## About This Project
 
 NexTune is designed as a scalable, developer-friendly platform demonstrating my expertise in modern web development technologies and best practices. It showcases:
