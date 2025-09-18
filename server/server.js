@@ -59,6 +59,11 @@ const apolloServer = new ApolloServer({
   try {
     await dbConnection();
     await connectToRedis();
+
+    await redisClient.set("test-key", "hello");
+    const value = await redisClient.get("test-key");
+    console.log("Redis test value:", value);
+
     await apolloServer.start();
 
     // ✅ Apply CORS + Apollo middleware

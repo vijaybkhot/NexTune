@@ -1,30 +1,26 @@
 import { createClient } from "redis";
 import dotenv from "dotenv";
+
 dotenv.config();
 
-// Optional: Validate required env variables
-const { REDIS_USER, REDIS_PASSWORD, REDIS_HOST, REDIS_PORT } = process.env;
-if (!REDIS_USER || !REDIS_PASSWORD || !REDIS_HOST || !REDIS_PORT) {
-  console.error("❌ Missing Redis environment variables");
+const { REDIS_URL } = process.env;
+
+if (!REDIS_URL) {
+  console.error("❌ Missing REDIS_URL in environment variables");
 }
 
 const client = createClient({
-  username: REDIS_USER,
-  password: REDIS_PASSWORD,
-  socket: {
-    host: REDIS_HOST,
-    port: Number(REDIS_PORT),
-  },
+  url: REDIS_URL,
 });
 
-client.on("error", (err) =>
-  console.error("❌ Redis Client Error in redisClientConnection:", err)
-);
+client.on("error", (err) => {
+  console.error("❌ Redis Client Error:", err);
+});
 
 const connectToRedis = async () => {
   try {
     await client.connect();
-    console.log("✅ Connected to Redis Cloud");
+    console.log("✅ Connected to Upstash Redis");
   } catch (err) {
     console.error("❌ Error connecting to Redis:", err.message);
   }
