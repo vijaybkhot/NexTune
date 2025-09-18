@@ -7,6 +7,8 @@
 ## Live Demo
 Check out the live application here: [NexTune Live](https://nex-tune.vercel.app/)
 
+> ⚠️ Note: On the free tier, Render may take up to ~50 seconds for the initial load as the app spins up. Subsequent requests are much faster.
+
 ---
 
 
