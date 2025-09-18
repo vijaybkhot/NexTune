@@ -16,13 +16,34 @@ dotenv.config();
 
 const PORT = process.env.PORT || 4000;
 
+// Parse allowed origins from .env
 const rawAllowedOrigins = process.env.ALLOWED_ORIGINS || "";
 const allowedOrigins = rawAllowedOrigins
   .split(",")
-  .map((origin) => origin.trim());
+  .map((origin) => origin.trim())
+  .filter(Boolean); // remove empty strings
 
 const app = express();
 app.use(express.json());
+
+// ✅ Common CORS config (reused for both OPTIONS + requests)
+const corsOptions = {
+  origin: (origin, callback) => {
+    console.log("Incoming request origin:", origin);
+    console.log("Allowed origins:", allowedOrigins);
+
+    // Allow requests without an origin (like curl, Postman)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
+
+// ✅ Handle preflight explicitly for /graphql
+app.options("/graphql", cors(corsOptions));
 
 async function getContext({ req }) {
   const queryString = req.body.query;
@@ -40,31 +61,19 @@ const apolloServer = new ApolloServer({
     await connectToRedis();
     await apolloServer.start();
 
-    // ✅ Apply CORS Middleware with Dynamic Origin Check
+    // ✅ Apply CORS + Apollo middleware
     app.use(
       "/graphql",
-      cors({
-        origin: (origin, callback) => {
-          console.log("Incoming request origin:", origin);
-          console.log("Allowed origins:", allowedOrigins);
-          // Allow requests with no origin (like mobile apps or curl)
-          if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-          } else {
-            callback(new Error("Not allowed by CORS"));
-          }
-        },
-        credentials: true,
-      }),
+      cors(corsOptions),
       apolloMiddleware(apolloServer, {
         context: getContext,
-        cors: false, // Disable internal Apollo CORS
+        cors: false, // disable Apollo internal CORS
       })
     );
 
     app.listen(PORT, "0.0.0.0", () => {
       console.log(`🚀 Server running on port ${PORT}`);
-      console.log(`📡 GraphQL endpoint: ${process.env.BASE_URL}`);
+      console.log(`📡 GraphQL endpoint: ${process.env.BASE_URL || "/graphql"}`);
     });
   } catch (err) {
     console.error("❌ Server startup error:", err);
