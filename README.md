@@ -10,7 +10,7 @@
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
 **A powerful, modern web application for managing and discovering music metadata**  
-*Built with cutting-edge technologies to showcase full-stack development expertise*
+_Built with cutting-edge technologies to showcase full-stack development expertise_
 
 [🚀 Quick Start](#-quick-start) • [💻 Live Demo](#-live-demo) • [📖 Documentation](#-api-documentation) • [🛠️ Tech Stack](#-what-makes-this-special)
 
@@ -24,7 +24,7 @@
 
 **[🚀 Check out NexTune Live!](https://nex-tune.vercel.app/)**
 
-*Fully functional demo with pre-loaded music data*
+_Fully functional demo with pre-loaded music data_
 
 > ⚠️ **Note:** On the free tier, Render may take up to ~50 seconds for the initial load as the app spins up. Subsequent requests are much faster.
 
@@ -37,7 +37,7 @@
 NexTune is your one-stop solution for organizing and exploring music collections. Think of it as a **digital music library manager** where you can:
 
 - 🎤 **Manage Artists** — Track bands, solo artists, formation dates, and band members
-- 💿 **Organize Albums** — Catalog releases with genres, dates, and track listings  
+- 💿 **Organize Albums** — Catalog releases with genres, dates, and track listings
 - 🎵 **Browse Songs** — Individual track management with duration and album connections
 - 🏢 **Record Labels** — Keep tabs on record companies and their artist rosters
 
@@ -52,21 +52,25 @@ NexTune is your one-stop solution for organizing and exploring music collections
 This project demonstrates **real-world software development skills** that translate directly to professional environments:
 
 ### 🎯 **Technical Excellence**
+
 - **Modern Stack Mastery** — Latest Next.js 15, TypeScript, and GraphQL technologies
 - **Database Expertise** — MongoDB for data persistence + Redis for lightning-fast caching
 - **Production-Ready Code** — Type-safe development, error handling, and clean architecture
 - **DevOps Skills** — Docker containerization and deployment-ready configuration
 
 ### 🚀 **Professional Development Practices**
+
 - **API-First Design** — GraphQL schema with comprehensive CRUD operations
 - **Responsive UI/UX** — Mobile-first design built with Tailwind CSS
 - **Code Quality** — TypeScript, ESLint, and automated code generation
 - **Scalable Architecture** — Modular components and separation of concerns
 
 ### 🔄 **Evolution Story**
-*From React to Next.js — A Journey of Growth*
+
+_From React to Next.js — A Journey of Growth_
 
 This project showcases **continuous learning and adaptation**:
+
 - **Started with:** React + Vite (available in `react_client/` folder)
 - **Evolved to:** Next.js 15 with App Router for better performance and SEO
 - **Why the upgrade?** Demonstrates ability to migrate and improve existing codebases
@@ -80,8 +84,9 @@ This project showcases **continuous learning and adaptation**:
 <td width="50%">
 
 ### 🎵 **Core Functionality**
+
 - ✅ **Complete CRUD Operations** — Create, Read, Update, Delete for all entities
-- ✅ **Smart Search System** — Find any artist, album, or song instantly  
+- ✅ **Smart Search System** — Find any artist, album, or song instantly
 - ✅ **Data Relationships** — See how artists connect to albums and songs
 - ✅ **Genre Classification** — Organize music by 25+ different genres
 - ✅ **Responsive Design** — Works perfectly on desktop, tablet, and mobile
@@ -90,6 +95,7 @@ This project showcases **continuous learning and adaptation**:
 <td width="50%">
 
 ### 🛠️ **Technical Features**
+
 - ⚡ **Lightning Fast** — Redis caching for instant data retrieval
 - 🔒 **Type Safe** — Zero runtime errors with TypeScript + GraphQL
 - 🐳 **Docker Ready** — One command deployment anywhere
@@ -122,26 +128,29 @@ graph TD
 </div>
 
 ### 🎨 **Frontend (What Users See)**
-| Technology | What It Does | Why It's Great |
-|------------|-------------|----------------|
-| **Next.js 15** | Modern React framework | ⚡ Super fast loading, SEO-friendly |
-| **TypeScript** | JavaScript with types | 🐛 Catches errors before they happen |
-| **Tailwind CSS** | Utility-first styling | 🎨 Beautiful, responsive design made easy |
-| **Apollo Client** | Data management | 🔄 Smart caching and real-time updates |
+
+| Technology        | What It Does           | Why It's Great                            |
+| ----------------- | ---------------------- | ----------------------------------------- |
+| **Next.js 15**    | Modern React framework | ⚡ Super fast loading, SEO-friendly       |
+| **TypeScript**    | JavaScript with types  | 🐛 Catches errors before they happen      |
+| **Tailwind CSS**  | Utility-first styling  | 🎨 Beautiful, responsive design made easy |
+| **Apollo Client** | Data management        | 🔄 Smart caching and real-time updates    |
 
 ### ⚙️ **Backend (The Engine)**
-| Technology | What It Does | Why It's Great |
-|------------|-------------|----------------|
-| **GraphQL** | API query language | 🎯 Get exactly the data you need |
-| **Node.js** | JavaScript runtime | 🚀 Fast, scalable server technology |
-| **MongoDB** | NoSQL database | 📊 Perfect for complex music relationships |
-| **Redis** | In-memory cache | ⚡ Lightning-fast data retrieval |
+
+| Technology  | What It Does       | Why It's Great                             |
+| ----------- | ------------------ | ------------------------------------------ |
+| **GraphQL** | API query language | 🎯 Get exactly the data you need           |
+| **Node.js** | JavaScript runtime | 🚀 Fast, scalable server technology        |
+| **MongoDB** | NoSQL database     | 📊 Perfect for complex music relationships |
+| **Redis**   | In-memory cache    | ⚡ Lightning-fast data retrieval           |
 
 ### 🚀 **DevOps (Easy Deployment)**
-| Technology | What It Does | Why It's Great |
-|------------|-------------|----------------|
-| **Docker** | Containerization | 📦 Run anywhere, same results every time |
-| **Docker Compose** | Multi-container setup | 🎭 Entire app with one command |
+
+| Technology         | What It Does          | Why It's Great                           |
+| ------------------ | --------------------- | ---------------------------------------- |
+| **Docker**         | Containerization      | 📦 Run anywhere, same results every time |
+| **Docker Compose** | Multi-container setup | 🎭 Entire app with one command           |
 
 ---
 
@@ -188,7 +197,8 @@ docker-compose up --build
 # That's it! 🎉
 ```
 
-**🌐 Open your browser:** 
+**🌐 Open your browser:**
+
 - **App**: http://localhost:3000
 - **GraphQL Playground**: http://localhost:4000/graphql
 
@@ -208,12 +218,14 @@ docker-compose up --build
 </details>
 
 #### **Step 1:** Get the Code
+
 ```bash
 git clone https://github.com/vijaybkhot/nextune.git
 cd nextune
 ```
 
 #### **Step 2:** Configure Environment
+
 Create these files with your database connections:
 
 <details>
@@ -242,11 +254,12 @@ NEXT_PUBLIC_GRAPHQL_ENDPOINT=http://localhost:4000/graphql
 </details>
 
 #### **Step 3:** Install & Run
+
 ```bash
 # Install backend dependencies
 cd server && npm install
 
-# Install frontend dependencies  
+# Install frontend dependencies
 cd ../client-nextjs && npm install
 
 # Seed database with sample music data
@@ -359,6 +372,7 @@ mutation AddArtist($name: String!, $dateFormed: String!, $members: [String!]!) {
 <summary><strong>Why Next.js instead of just React?</strong></summary>
 
 **Answer:** Next.js gives us superpowers! 🦸‍♂️
+
 - **Faster websites** — Server-side rendering means users see content instantly
 - **Better SEO** — Google loves websites that load quickly
 - **Built-in optimizations** — Images, fonts, and code automatically optimized
@@ -370,6 +384,7 @@ mutation AddArtist($name: String!, $dateFormed: String!, $members: [String!]!) {
 <summary><strong>What's so special about GraphQL?</strong></summary>
 
 **Answer:** Think of it as "smart data fetching" 🧠
+
 - **Get exactly what you need** — No more, no less
 - **One request, all data** — Instead of multiple API calls
 - **Type-safe** — Catches errors before they reach users
@@ -381,6 +396,7 @@ mutation AddArtist($name: String!, $dateFormed: String!, $members: [String!]!) {
 <summary><strong>Why MongoDB + Redis together?</strong></summary>
 
 **Answer:** Best of both worlds! 🌍
+
 - **MongoDB** — Perfect for complex music relationships (artist → albums → songs)
 - **Redis** — Lightning-fast cache for instant search results
 - **Together** — Users get fast responses, server stays efficient
@@ -391,6 +407,7 @@ mutation AddArtist($name: String!, $dateFormed: String!, $members: [String!]!) {
 <summary><strong>Docker seems complicated. Why use it?</strong></summary>
 
 **Answer:** It's actually the easy button! 🔘
+
 - **"Works on my machine" syndrome solved** — Same environment everywhere
 - **One command deployment** — No complex server setup
 - **Scales easily** — From laptop to production server
@@ -429,35 +446,40 @@ npm run codegen      # Generate TypeScript types
 <td width="50%">
 
 **Frontend: Vercel** ⚡
+
 ```bash
 # Push to GitHub, then:
 # 1. Connect repo to Vercel
 # 2. Set environment variables
 # 3. Auto-deploy on every push
 ```
+
 ✅ Perfect for demos  
 ✅ Free tier available  
-✅ Lightning fast CDN  
+✅ Lightning fast CDN
 
 </td>
 <td width="50%">
 
 **Backend: Railway/Render** 🚂
+
 ```bash
 # 1. Connect GitHub repo
 # 2. Configure build settings
 # 3. Add environment variables
 # 4. Deploy with one click
 ```
+
 ✅ Easy database hosting  
 ✅ Auto-scaling  
-✅ Free tiers available  
+✅ Free tiers available
 
 </td>
 </tr>
 </table>
 
 ### 🐳 **For Production**
+
 ```bash
 # Professional Docker deployment
 docker-compose -f docker-compose.prod.yml up -d
@@ -476,6 +498,7 @@ docker-compose -f docker-compose.prod.yml up -d
 5. 🎯 **Open** a Pull Request
 
 **Ideas for contributions:**
+
 - 🎨 UI/UX improvements
 - � Advanced search features
 - 📊 Data visualization
@@ -488,17 +511,18 @@ docker-compose -f docker-compose.prod.yml up -d
 
 <div align="center">
 
-**Vijay Khot** — *Full-Stack Developer*
+**Vijay Khot** — _Full-Stack Developer_
 
 [![GitHub](https://img.shields.io/badge/GitHub-vijaybkhot-black?style=for-the-badge&logo=github)](https://github.com/vijaybkhot)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/vijaybkhot)
-[![Email](https://img.shields.io/badge/Email-Contact-red?style=for-the-badge&logo=gmail)](mailto:your.email@example.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/vijay-khot)
+[![Email](https://img.shields.io/badge/Email-Contact-red?style=for-the-badge&logo=gmail)](mailto:vijay-khot@outlook.com)
 
 ---
 
 ### � **For Recruiters**
 
 This project demonstrates:
+
 - ✅ **Full-stack development** with modern technologies
 - ✅ **Database design** and complex relationships
 - ✅ **API development** with GraphQL
@@ -506,7 +530,7 @@ This project demonstrates:
 - ✅ **DevOps knowledge** with Docker containerization
 - ✅ **Code quality** with TypeScript and testing practices
 
-**📄 [View Resume](link-to-resume)** • **💼 [Portfolio](link-to-portfolio)** • **📧 [Schedule Interview](link-to-calendar)**
+**📄 [View Resume](https://vijaykhot-dev.vercel.app/resume/Vijay_Khot_Resume.pdf)** • **💼 [Portfolio](https://vijaykhot-dev.vercel.app/)**
 
 </div>
 
@@ -516,7 +540,7 @@ This project demonstrates:
 
 **⭐ If you found this project helpful, please give it a star! ⭐**
 
-*Built with ❤️ using Next.js, GraphQL, and modern web technologies*
+_Built with ❤️ using Next.js, GraphQL, and modern web technologies_
 
 **© 2024 NexTune - Open Source Music Management Platform**
 
