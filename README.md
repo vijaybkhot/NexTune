@@ -18,6 +18,20 @@
 
 ---
 
+## 💻 Live Demo
+
+<div align="center">
+
+**[🚀 Check out NexTune Live!](https://nex-tune.vercel.app/)**
+
+*Fully functional demo with pre-loaded music data*
+
+> ⚠️ **Note:** On the free tier, Render may take up to ~50 seconds for the initial load as the app spins up. Subsequent requests are much faster.
+
+</div>
+
+---
+
 ## ✨ What is NexTune?
 
 NexTune is your one-stop solution for organizing and exploring music collections. Think of it as a **digital music library manager** where you can:
@@ -246,20 +260,6 @@ cd ../client-nextjs && npm run dev
 ```
 
 **🎉 Done!** Visit http://localhost:3000
-
----
-
-### 💻 Live Demo
-
-**🌟 Want to see it in action first?**
-
-<div align="center">
-
-**[🚀 Live Demo Coming Soon]**
-
-*Demo will showcase all features with pre-loaded music data*
-
-</div>
 
 ---
 
